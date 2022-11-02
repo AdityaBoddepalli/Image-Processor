@@ -2,10 +2,22 @@ package model;
 
 public class StdPixel implements Pixel {
 
-  int redVal;
-  int greVal;
-  int bluVal;
-  int maxVal;
+  private final int redVal;
+  private final int greVal;
+  private final int bluVal;
+  private final int maxVal;
+
+  public StdPixel(int redVal, int greVal, int bluVal, int maxVal) {
+    if (redVal > maxVal || bluVal > maxVal || greVal > maxVal) {
+      throw new IllegalArgumentException("Color value should not be greater than max value");
+    } else if (redVal < 0 || greVal < 0 || bluVal < 0) {
+      throw new IllegalArgumentException("Color value cannot be negative");
+    }
+    this.redVal = redVal;
+    this.greVal = greVal;
+    this.bluVal = bluVal;
+    this.maxVal = maxVal;
+  }
 
   /**
    * An observer on a pixel that returns the red component.
@@ -14,7 +26,7 @@ public class StdPixel implements Pixel {
    */
   @Override
   public int getRed() {
-    return 0;
+    return this.redVal;
   }
 
   /**
@@ -24,7 +36,7 @@ public class StdPixel implements Pixel {
    */
   @Override
   public int getGreen() {
-    return 0;
+    return this.greVal;
   }
 
   /**
@@ -34,7 +46,7 @@ public class StdPixel implements Pixel {
    */
   @Override
   public int getBlue() {
-    return 0;
+    return this.bluVal;
   }
 
   /**
@@ -44,7 +56,7 @@ public class StdPixel implements Pixel {
    */
   @Override
   public int getMaxVal() {
-    return 0;
+    return this.maxVal;
   }
 
   /**
@@ -53,8 +65,25 @@ public class StdPixel implements Pixel {
    * @return a greyscale version of the pixel
    */
   @Override
-  public Pixel greyscale() {
-    return null;
+  public Pixel greyscale(String type) {
+    int colVal = 0;
+    switch (type.toLowerCase()) {
+      case "value":
+        colVal = Math.max(Math.max(this.getRed(), this.getGreen())
+                , this.getBlue());
+        break;
+      case "intensity":
+        colVal = this.getBlue() + this.getGreen() + this.getRed();
+        colVal /= 3;
+        break;
+      case "luma":
+        colVal = (int) (0.2126 * this.getRed() +
+                0.7152 * this.getGreen() + 0.0722 * this.getBlue());
+        break;
+      default:
+        throw new IllegalArgumentException("Invalid way to visualize greyscale: " + type);
+    }
+    return new StdPixel(colVal, colVal, colVal, this.getMaxVal());
   }
 
   /**
@@ -65,17 +94,24 @@ public class StdPixel implements Pixel {
    */
   @Override
   public Pixel brighten(int factor) {
-    return null;
+    int newRed = this.redVal + factor;
+    int newGreen = this.greVal + factor;
+    int newBlue = this.bluVal + factor;
+    newRed = this.normalize(newRed);
+    newGreen = this.normalize(newGreen);
+    newBlue = this.normalize(newBlue);
+    return new StdPixel(newRed, newGreen, newBlue, this.getMaxVal());
   }
 
-  /**
-   * Returns a pixel that is representing the pixel darkened by the given factor.
-   *
-   * @param factor
-   * @return a darkened version of the pixel
-   */
-  @Override
-  public Pixel darken(int factor) {
-    return null;
+  private int normalize(int colorVal) {
+    if (colorVal < 0) {
+      return 0;
+    } else if (colorVal > this.getMaxVal()) {
+      return this.getMaxVal();
+    } else {
+      return colorVal;
+    }
   }
+
+
 }
