@@ -1,47 +1,70 @@
 package model;
 
-public interface PixelImage extends PixelImageState {
+public interface PixelImage {
 
   /**
-   * Visualizes the image as a red-scaled image.
+   * Returns the value of the pixel at the given row and column.
+   *
+   * @param row the row value of the pixel
+   * @param col the column value of the pixel
+   * @return the Pixel at the given row and column values
    */
-  void redComponent();
+  Pixel getPixelAt(int row, int col);
 
   /**
-   * Visualizes the image as a green-scaled image.
+   * Returns the number of rows of pixels in this image.
+   * @return the height
    */
-  void greComponent();
+  int getHeight();
+
 
   /**
-   * Visualizes the image as a blue-scaled image.
+   * Returns the number of columns of pixels in this image.
+   * @return the width
    */
-  void bluComponent();
+  int getWidth();
 
   /**
-   * Visualizes the image as a grey-scaled image by taking the average of
-   * the three rgb values and set the value to all three.
+   * Returns the maximum numeric value a pixel in this PixelImage can have.
+   * @return an integer representing the max value.
    */
-  void visGreyscale();
+  int getMaxValue();
 
   /**
-   * Visualizes the image as the mirror image in the horizontal direction of the original,
-   * flipping based off which direction is inputted.
+   * Visualizes the image as a color-scaled image.
+   * @param color the color to grayscale
+   * @return a new PixelImage in blue scale.
    */
-  void flipImageHoriz(String direction);
+  PixelImage getComponent(String color);
+
 
   /**
-   * Visualizes the image as the mirror image in the vertical direction of the original,
-   * flipping based off which direction is inputted.
+   * Visualizes the given image in greyscale according to the specified type.
+   * @param type the type of greyscale - value, intensity or luma
+   * @return a new Image greyscaled accordingly.
    */
-  void flipImageVert(String direction);
+  PixelImage visGreyscale(String type);
 
   /**
-   * Visualizes the image as a brighter version of the original image by a certain factor.
+   * Visualizes this image as the mirror image in the given direction of the original.
+   *
+   * @param direction the direction to flip.
+   * @return a new Image flipped horizontally.
    */
-  void imageBrighten(int factor);
+  PixelImage flipImage(String direction);
 
   /**
-   * Visualizes the image as a darker version of the original image by a certain factor.
+   * Visualizes the image as a brighter/darker version of
+   * the original image by a certain factor.
+   *
+   * @param factor the factor to brighten
+   * @return a new PixelImage that is brightened.
    */
-  void imageDarken(int factor);
+  PixelImage adjustBrightness(int factor);
+
+  /**
+   * Saves this image to the given path
+   * @param path the path to save to.
+   */
+  void saveImg(String path);
 }

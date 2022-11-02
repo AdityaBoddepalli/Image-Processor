@@ -35,10 +35,10 @@ public interface Pixel {
 
   /**
    * Returns a pixel representing the greyscale version of the pixel.
-   *
+   * @param type method to greyscale the pixel
    * @return a greyscale version of the pixel
    */
-  Pixel greyscale();
+  Pixel greyscale(String type);
 
   /**
    * Returns a pixel that is representing the pixel brightened by the given factor.
@@ -47,10 +47,5 @@ public interface Pixel {
    */
   Pixel brighten(int factor);
 
-  /**
-   * Returns a pixel that is representing the pixel darkened by the given factor.
-   *
-   * @return a darkened version of the pixel
-   */
-  Pixel darken(int factor);
+
 }

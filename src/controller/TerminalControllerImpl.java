@@ -1,11 +1,12 @@
 package controller;
 
+import model.ImageProcessor;
 import model.PixelImage;
 import view.PixelImageView;
 
 public class TerminalControllerImpl implements TerminalController {
 
-  PixelImage model;
+  ImageProcessor model;
   PixelImageView view;
   Readable input;
 
