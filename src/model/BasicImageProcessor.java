@@ -144,14 +144,11 @@ public class BasicImageProcessor implements ImageProcessor {
   /**
    * Return a map of the images loaded so for with their names.
    *
-   * @return a map of img names to the Pixel Image
+   * @param imgName the img name
+   * @return a img with the given name
    */
   @Override
-  public Map<String, PixelImage> getLoadedImgs() {
-    Map<String, PixelImage> loadedImages = new HashMap<>();
-    for(Map.Entry<String, PixelImage> entry : this.images.entrySet()) {
-      loadedImages.put(entry.getKey(), entry.getValue());
-    }
-    return loadedImages;
+  public PixelImage getLoadedImg(String imgName) {
+    return this.images.get(imgName);
   }
 }
