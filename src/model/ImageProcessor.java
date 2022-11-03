@@ -81,9 +81,10 @@ public interface ImageProcessor {
 
   /**
    * Return a map of the images loaded so for with their names.
-   * @return a map of img names to the Pixel Image
+   * @param imgName the img name
+   * @return a img with the given name
    */
-  Map<String, PixelImage> getLoadedImgs();
+  PixelImage getLoadedImg(String imgName);
 
 
 }

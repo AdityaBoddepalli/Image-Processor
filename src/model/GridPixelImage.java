@@ -2,6 +2,8 @@ package model;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class GridPixelImage implements PixelImage {
 
@@ -97,7 +99,7 @@ public class GridPixelImage implements PixelImage {
           default:
             throw new IllegalArgumentException("Invalid component to visualize");
         }
-        Pixel p = new StdPixel(colVal, colVal, colVal, this.getMaxValue());
+        Pixel p = new StdPixel(0, 0, colVal, this.getMaxValue());
         newGrid[row][col] = p;
       }
     }
@@ -141,8 +143,10 @@ public class GridPixelImage implements PixelImage {
         switch (direction.toLowerCase()) {
           case "vertical":
             newGrid[this.height - 1 - row][col] = p;
+            break;
           case "horizontal":
             newGrid[row][this.width - 1 - col] = p;
+            break;
           default:
             throw new IllegalArgumentException("Invalid direction to flip: " + direction);
         }
@@ -172,7 +176,6 @@ public class GridPixelImage implements PixelImage {
   }
 
 
-
   /**
    * Saves this image to the given path
    *
@@ -183,14 +186,14 @@ public class GridPixelImage implements PixelImage {
     try {
       FileWriter save = new FileWriter(path);
       save.write("P3\n");
-      save.write(String.format("%i %i\n", this.width, this.height));
-      save.write(String.format("%i\n", this.getMaxValue()));
+      save.write(String.format("%d %d\n", this.width, this.height));
+      save.write(String.format("%d\n", this.getMaxValue()));
       for (int row = 0; row < this.getHeight(); row++) {
         for (int col = 0; col < this.getWidth(); col++) {
           Pixel currPixel = this.getPixelAt(row, col);
-          save.write(String.format("%i\n", currPixel.getRed()));
-          save.write(String.format("%i\n", currPixel.getGreen()));
-          save.write(String.format("%i\n", currPixel.getBlue()));
+          save.write(String.format("%d\n", currPixel.getRed()));
+          save.write(String.format("%d\n", currPixel.getGreen()));
+          save.write(String.format("%d\n", currPixel.getBlue()));
         }
       }
       save.close();
@@ -198,5 +201,34 @@ public class GridPixelImage implements PixelImage {
     } catch (IOException e) {
       throw new IllegalStateException("Couldn't write to file");
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o == null || !(o instanceof GridPixelImage)) {
+      return false;
+    }
+    GridPixelImage that = (GridPixelImage) o;
+    return height == that.height
+            && width == that.width
+            && this.checkSameGrid(that);
+  }
+
+  private boolean checkSameGrid(GridPixelImage that) {
+    for (int row = 0; row < this.getHeight(); row++) {
+      if(!(Arrays.equals(this.imageGrid[row], that.imageGrid[row]))) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = Objects.hash(height, width);
+    result = 31 * result + Arrays.hashCode(imageGrid);
+    return result;
   }
 }

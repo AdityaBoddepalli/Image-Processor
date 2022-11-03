@@ -38,40 +38,7 @@ public class ImageUtil {
 
     return sc;
 
-//    String token;
-//
-//    token = sc.next();
-//    if (!token.equals("P3")) {
-//      System.out.println("Invalid PPM file: plain RAW file should begin with P3");
-//    }
-//    int width = sc.nextInt();
-//    System.out.println("Width of image: " + width);
-//    int height = sc.nextInt();
-//    System.out.println("Height of image: " + height);
-//    int maxValue = sc.nextInt();
-//    System.out.println("Maximum value of a color in this file (usually 255): " + maxValue);
-//
-//    for (int i = 0; i < height; i++) {
-//      for (int j = 0; j < width; j++) {
-//        int r = sc.nextInt();
-//        int g = sc.nextInt();
-//        int b = sc.nextInt();
-//        System.out.println("Color of pixel (" + j + "," + i + "): " + r + "," + g + "," + b);
-//      }
-//    }
   }
 
-//  //demo main
-//  public static void main(String[] args) {
-//    String filename;
-//
-//    if (args.length > 0) {
-//      filename = args[0];
-//    } else {
-//      filename = "C:\\Users\\farne\\Documents\\Image-Processor\\res\\Koala.ppm";
-//    }
-//
-//    model.ImageUtil.readPPM(filename);
-//  }
 }
 

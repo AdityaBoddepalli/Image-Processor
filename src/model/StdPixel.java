@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class StdPixel implements Pixel {
 
   private final int redVal;
@@ -77,7 +79,8 @@ public class StdPixel implements Pixel {
         colVal /= 3;
         break;
       case "luma":
-        colVal = (int) (0.2126 * this.getRed() +
+        colVal = (int) Math.round(
+                0.2126 * this.getRed() +
                 0.7152 * this.getGreen() + 0.0722 * this.getBlue());
         break;
       default:
@@ -113,5 +116,20 @@ public class StdPixel implements Pixel {
     }
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o == null || !(o instanceof StdPixel)) {
+      return false;
+    }
+    StdPixel stdPixel = (StdPixel) o;
+    return redVal == stdPixel.redVal && greVal == stdPixel.greVal && bluVal == stdPixel.bluVal
+            && maxVal == stdPixel.maxVal;
+  }
 
+  @Override
+  public int hashCode() {
+    return Objects.hash(redVal, greVal, bluVal, maxVal);
+  }
 }

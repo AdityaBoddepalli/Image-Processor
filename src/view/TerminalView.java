@@ -6,6 +6,17 @@ public class TerminalView implements PixelImageView {
 
   Appendable output;
 
+  public TerminalView(Appendable output) {
+    if(output == null) {
+      throw new IllegalArgumentException("Invalid view");
+    }
+    this.output = output;
+  }
+
+  public TerminalView() {
+    this.output = System.out;
+  }
+
   /**
    * Render a specific message to the provided data destination.
    *
@@ -14,6 +25,6 @@ public class TerminalView implements PixelImageView {
    */
   @Override
   public void transmitMessage(String message) throws IOException {
-
+    this.output.append(message);
   }
 }
