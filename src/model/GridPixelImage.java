@@ -99,7 +99,7 @@ public class GridPixelImage implements PixelImage {
           default:
             throw new IllegalArgumentException("Invalid component to visualize");
         }
-        Pixel p = new StdPixel(0, 0, colVal, this.getMaxValue());
+        Pixel p = new StdPixel(colVal, colVal, colVal, this.getMaxValue());
         newGrid[row][col] = p;
       }
     }
