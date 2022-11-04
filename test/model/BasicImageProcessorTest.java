@@ -4,19 +4,38 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
-import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+
+/**
+ * Tests the functionality of the img processor model.
+ */
 public class BasicImageProcessorTest {
 
   ImageProcessor imgpro1;
 
+
+  /**
+   * Inits the data.
+   */
   @Before
   public void initData() {
     imgpro1 = new BasicImageProcessor(new HashMap<String, PixelImage>());
     imgpro1.loadImage("res/masterTester.ppm", "master");
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testConstructorException() {
+    imgpro1 = new BasicImageProcessor(null);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testEnsureKey() {
+    this.initData();
+    imgpro1.getLoadedImg("deez");
+  }
+
 
   @Test
   public void loadImage() {
@@ -257,6 +276,34 @@ public class BasicImageProcessorTest {
   }
 
   @Test
+  public void flipTwice() {
+    this.initData();
+    imgpro1.flipImage("master", "master vert", "vertical");
+    imgpro1.flipImage("master vert", "master flip2", "horizontal");
+    PixelImage masterVert = imgpro1.getLoadedImg("master flip2");
+
+
+    assertEquals(new StdPixel(255, 255, 255, 255),
+            masterVert.getPixelAt(0, 0));
+    assertEquals(new StdPixel(125, 125, 125, 255),
+            masterVert.getPixelAt(0, 1));
+    assertEquals(new StdPixel(0, 0, 0, 255),
+            masterVert.getPixelAt(0, 2));
+    assertEquals(new StdPixel(0, 255, 255, 255),
+            masterVert.getPixelAt(1, 0));
+    assertEquals(new StdPixel(255, 255, 0, 255),
+            masterVert.getPixelAt(1, 1));
+    assertEquals(new StdPixel(255, 0, 255, 255),
+            masterVert.getPixelAt(1, 2));
+    assertEquals(new StdPixel(0, 0, 255, 255),
+            masterVert.getPixelAt(2, 0));
+    assertEquals(new StdPixel(0, 255, 0, 255),
+            masterVert.getPixelAt(2, 1));
+    assertEquals(new StdPixel(255, 0, 0, 255),
+            masterVert.getPixelAt(2, 2));
+  }
+
+  @Test
   public void imageBrighten() {
     this.initData();
     imgpro1.adjustBrightness("master", 10, "master bright");
@@ -315,7 +362,8 @@ public class BasicImageProcessorTest {
     imgpro1.saveToPPM("res/master-dark.ppm", "master dark");
     imgpro1.loadImage("res/master-dark.ppm", "master dark 2");
 
-    assertEquals(imgpro1.getLoadedImg("master dark"), imgpro1.getLoadedImg("master dark 2"));
+    assertEquals(imgpro1.getLoadedImg("master dark"),
+            imgpro1.getLoadedImg("master dark 2"));
 
   }
 

@@ -2,6 +2,9 @@ package model;
 
 import java.util.Objects;
 
+/**
+ * An implementation of Pixel with RGB and max pixel value.
+ */
 public class StdPixel implements Pixel {
 
   private final int redVal;
@@ -9,6 +12,14 @@ public class StdPixel implements Pixel {
   private final int bluVal;
   private final int maxVal;
 
+  /**
+   * Constructs an StdPixel.
+   *
+   * @param redVal red
+   * @param greVal greed
+   * @param bluVal blue
+   * @param maxVal max
+   */
   public StdPixel(int redVal, int greVal, int bluVal, int maxVal) {
     if (redVal > maxVal || bluVal > maxVal || greVal > maxVal) {
       throw new IllegalArgumentException("Color value should not be greater than max value");
@@ -81,7 +92,7 @@ public class StdPixel implements Pixel {
       case "luma":
         colVal = (int) Math.round(
                 0.2126 * this.getRed() +
-                0.7152 * this.getGreen() + 0.0722 * this.getBlue());
+                        0.7152 * this.getGreen() + 0.0722 * this.getBlue());
         break;
       default:
         throw new IllegalArgumentException("Invalid way to visualize greyscale: " + type);
@@ -92,7 +103,7 @@ public class StdPixel implements Pixel {
   /**
    * Returns a pixel that is representing the pixel brightened by the given factor.
    *
-   * @param factor
+   * @param factor factor to brighten
    * @return a brightened version of the pixel
    */
   @Override
@@ -106,6 +117,12 @@ public class StdPixel implements Pixel {
     return new StdPixel(newRed, newGreen, newBlue, this.getMaxVal());
   }
 
+  /**
+   * Adjusts the brightness to the closes valid value.
+   *
+   * @param colorVal the color to adjust
+   * @return adjusted val
+   */
   private int normalize(int colorVal) {
     if (colorVal < 0) {
       return 0;
@@ -118,9 +135,10 @@ public class StdPixel implements Pixel {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
+    if (this == o) {
       return true;
-    if (o == null || !(o instanceof StdPixel)) {
+    }
+    if (!(o instanceof StdPixel)) {
       return false;
     }
     StdPixel stdPixel = (StdPixel) o;

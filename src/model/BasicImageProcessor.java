@@ -1,17 +1,26 @@
 package model;
 
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 
-
+/**
+ * An implementation of the image processor with a hashmap to store previous images.
+ */
 public class BasicImageProcessor implements ImageProcessor {
 
   private final Map<String, PixelImage> images;
 
+  /**
+   * Constructs a basic image processor.
+   *
+   * @param images hashmap of images
+   */
   public BasicImageProcessor(Map<String, PixelImage> images) {
+    if (images == null) {
+      throw new IllegalArgumentException("cant have a null map");
+    }
     this.images = images;
   }
 
@@ -36,13 +45,13 @@ public class BasicImageProcessor implements ImageProcessor {
 
     Pixel[][] grid = new Pixel[height][width];
 
-    for(int row = 0; row < height; row++) {
-      for(int col = 0; col < width; col++) {
+    for (int row = 0; row < height; row++) {
+      for (int col = 0; col < width; col++) {
         int r = imgScanner.nextInt();
         int g = imgScanner.nextInt();
         int b = imgScanner.nextInt();
 
-        Pixel p = new StdPixel(r,g,b,maxVal);
+        Pixel p = new StdPixel(r, g, b, maxVal);
         grid[row][col] = p;
       }
     }
@@ -51,7 +60,27 @@ public class BasicImageProcessor implements ImageProcessor {
     this.images.put(imgName, image);
 
   }
+
+  /**
+   * Ensures that the given key is a valid image name.
+   *
+   * @param key the key
+   */
+  private void ensureKey(String key) {
+    if (!(images.containsKey(key))) {
+      throw new IllegalArgumentException("No image called " + key + " is currently loaded");
+    }
+  }
+
+  /**
+   * Extracts the given component from the image.
+   *
+   * @param imgName  the image name
+   * @param destName name of the new image
+   * @param color    color to extract.
+   */
   private void extractComponent(String imgName, String destName, String color) {
+    this.ensureKey(imgName);
     PixelImage editedImage = this.images.get(imgName).getComponent(color);
     this.images.put(destName, editedImage);
   }
@@ -99,6 +128,7 @@ public class BasicImageProcessor implements ImageProcessor {
    */
   @Override
   public void visGreyscale(String imgName, String destName, String type) {
+    this.ensureKey(imgName);
     PixelImage editedImage = this.images.get(imgName).visGreyscale(type);
     this.images.put(destName, editedImage);
   }
@@ -112,6 +142,7 @@ public class BasicImageProcessor implements ImageProcessor {
    */
   @Override
   public void flipImage(String imgName, String destName, String direction) {
+    this.ensureKey(imgName);
     PixelImage editedImage = this.images.get(imgName).flipImage(direction);
     this.images.put(destName, editedImage);
   }
@@ -125,6 +156,7 @@ public class BasicImageProcessor implements ImageProcessor {
    */
   @Override
   public void adjustBrightness(String imgName, int factor, String destName) {
+    this.ensureKey(imgName);
     PixelImage editedImage = this.images.get(imgName).adjustBrightness(factor);
     this.images.put(destName, editedImage);
   }
@@ -138,6 +170,7 @@ public class BasicImageProcessor implements ImageProcessor {
    */
   @Override
   public void saveToPPM(String fileName, String imgName) {
+    this.ensureKey(imgName);
     this.images.get(imgName).saveImg(fileName);
   }
 
@@ -149,6 +182,7 @@ public class BasicImageProcessor implements ImageProcessor {
    */
   @Override
   public PixelImage getLoadedImg(String imgName) {
+    this.ensureKey(imgName);
     return this.images.get(imgName);
   }
 }

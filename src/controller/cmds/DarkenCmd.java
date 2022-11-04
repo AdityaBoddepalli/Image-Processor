@@ -4,7 +4,15 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+/**
+ * The command that executes a darkened image.
+ */
 public class DarkenCmd extends AbstractCmd {
+  /**
+   * Constructs a darkencmd.
+   *
+   * @param input the input into the command
+   */
   public DarkenCmd(Scanner input) {
     super(input);
   }

@@ -3,17 +3,26 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
-import controller.TerminalController;
-import controller.TerminalControllerImpl;
+import controller.ImageProcessorController;
+import controller.ImageProcessorControllerImpl;
 import model.BasicImageProcessor;
 import model.ImageProcessor;
 import view.PixelImageView;
 import view.TerminalView;
 
+/**
+ * The runner class that houses main.
+ */
 public class ImageProcessorRunner {
+
+  /**
+   * Main method to run the img processor.
+   *
+   * @param args enter filepath as first argument if a script needs to be executed.
+   */
   public static void main(String[] args) {
     Readable input;
-    if(args.length == 1) {
+    if (args.length == 1) {
       try {
         input = new InputStreamReader(new FileInputStream(args[0]));
       } catch (FileNotFoundException e) {
@@ -24,7 +33,7 @@ public class ImageProcessorRunner {
     }
     ImageProcessor model = new BasicImageProcessor(new HashMap<>());
     PixelImageView view = new TerminalView();
-    TerminalController controller = new TerminalControllerImpl(model, view, input);
+    ImageProcessorController controller = new ImageProcessorControllerImpl(model, view, input);
     controller.startProcessing();
   }
 }

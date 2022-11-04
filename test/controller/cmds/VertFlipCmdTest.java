@@ -1,12 +1,24 @@
 package controller.cmds;
 
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.util.Scanner;
 
-public class VertFlipCmdTest {
+/**
+ * Tests a specific instance of abstract commands.
+ */
+public class VertFlipCmdTest extends AbstractCmdTest {
 
-  @Test
-  public void specificCommand() {
+
+  /**
+   * Creates an instance to abstract test.
+   */
+  public VertFlipCmdTest() {
+    super(new Scanner("koala blue-koala"), "koala"
+            , "Command: flip-vertical koala blue-koala\n");
+  }
+
+  @Override
+  protected ImageProcessorCmds createCmd(Scanner input) {
+    return new VertFlipCmd(input);
   }
 }

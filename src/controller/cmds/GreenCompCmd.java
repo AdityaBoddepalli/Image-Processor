@@ -4,7 +4,15 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+/**
+ * The command that executes a green component.
+ */
 public class GreenCompCmd extends AbstractCmd {
+  /**
+   * Constructs a greencompcmd.
+   *
+   * @param input the input into the command
+   */
   public GreenCompCmd(Scanner input) {
     super(input);
   }

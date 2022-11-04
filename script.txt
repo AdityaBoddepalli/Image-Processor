@@ -1,0 +1,4 @@
+load res/ramensticker.ppm ramen
+flip-vertical ramen flippedramen
+red-component flippedramen redflippedramen
+save res/newramensticker.ppm redflippedramen

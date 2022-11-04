@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 
+
+/**
+ * An implementation of a PixelImage with a 2D Pixel array.
+ */
 public class GridPixelImage implements PixelImage {
 
   private final Pixel[][] imageGrid;
@@ -15,13 +19,16 @@ public class GridPixelImage implements PixelImage {
 
 
   /**
-   * C
+   * Constructs a GridPixelImage.
    *
-   * @param imageGrid
-   * @param height
-   * @param width
+   * @param imageGrid 2d array
+   * @param height    height of the image
+   * @param width     width of the image
    */
   public GridPixelImage(Pixel[][] imageGrid, int height, int width) {
+    if (imageGrid == null) {
+      throw new IllegalArgumentException("null 2d array");
+    }
     this.imageGrid = imageGrid;
     this.height = height;
     this.width = width;
@@ -177,7 +184,7 @@ public class GridPixelImage implements PixelImage {
 
 
   /**
-   * Saves this image to the given path
+   * Saves this image to the given path.
    *
    * @param path the path to save to.
    */
@@ -205,9 +212,10 @@ public class GridPixelImage implements PixelImage {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
+    if (this == o) {
       return true;
-    if (o == null || !(o instanceof GridPixelImage)) {
+    }
+    if (!(o instanceof GridPixelImage)) {
       return false;
     }
     GridPixelImage that = (GridPixelImage) o;
@@ -216,9 +224,15 @@ public class GridPixelImage implements PixelImage {
             && this.checkSameGrid(that);
   }
 
+  /**
+   * checks if this pixel and that GridPixelImage have the same 2d array.
+   *
+   * @param that the pixel image to compare to
+   * @return true if equal
+   */
   private boolean checkSameGrid(GridPixelImage that) {
     for (int row = 0; row < this.getHeight(); row++) {
-      if(!(Arrays.equals(this.imageGrid[row], that.imageGrid[row]))) {
+      if (!(Arrays.equals(this.imageGrid[row], that.imageGrid[row]))) {
         return false;
       }
     }

@@ -6,12 +6,19 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
+
+/**
+ * Tests the functionality of the Terminal View.
+ */
 public class TerminalViewTest {
 
   PixelImageView pIV;
   StringBuilder out;
 
-  public void initData() {
+  /**
+   * Inits the data.
+   */
+  private void initData() {
     out = new StringBuilder();
     pIV = new TerminalView(out);
   }

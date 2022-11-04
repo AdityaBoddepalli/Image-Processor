@@ -4,7 +4,15 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+/**
+ * The command that greyscales.
+ */
 public class GreyscaleCmd extends AbstractCmd {
+  /**
+   * Constructs a greyscalecmd.
+   *
+   * @param input the input into the command.
+   */
   public GreyscaleCmd(Scanner input) {
     super(input);
   }

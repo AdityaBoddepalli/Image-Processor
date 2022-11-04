@@ -4,7 +4,14 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+/**
+ * The command that vertically flips an image.
+ */
 public class VertFlipCmd extends AbstractCmd {
+  /**
+   * Constructs a vertflipcmd.
+   * @param input the input into the command
+   */
   public VertFlipCmd(Scanner input) {
     super(input);
   }

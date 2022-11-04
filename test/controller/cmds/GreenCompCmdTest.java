@@ -1,12 +1,23 @@
 package controller.cmds;
 
-import org.junit.Test;
+import java.util.Scanner;
 
-import static org.junit.Assert.*;
+/**
+ * Tests a specific instance of abstract commands.
+ */
+public class GreenCompCmdTest extends AbstractCmdTest {
 
-public class GreenCompCmdTest {
 
-  @Test
-  public void specificCommand() {
+  /**
+   * Creates an instance to abstract test.
+   */
+  public GreenCompCmdTest() {
+    super(new Scanner("koala blue-koala"), "koala"
+            , "Command: green-component koala blue-koala\n");
+  }
+
+  @Override
+  protected ImageProcessorCmds createCmd(Scanner input) {
+    return new GreenCompCmd(input);
   }
 }

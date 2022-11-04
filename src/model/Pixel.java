@@ -35,6 +35,7 @@ public interface Pixel {
 
   /**
    * Returns a pixel representing the greyscale version of the pixel.
+   *
    * @param type method to greyscale the pixel
    * @return a greyscale version of the pixel
    */

@@ -4,7 +4,14 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+/**
+ * The command that saves an image.
+ */
 public class SaveCmd extends AbstractCmd {
+  /**
+   * Constructs a savecmd.
+   * @param input the input into the command.
+   */
   public SaveCmd(Scanner input) {
     super(input);
   }

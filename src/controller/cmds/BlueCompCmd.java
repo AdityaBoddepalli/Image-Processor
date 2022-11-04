@@ -4,7 +4,16 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+/**
+ * The command that executes a blue component.
+ */
 public class BlueCompCmd extends AbstractCmd {
+
+  /**
+   * Constructs a bluecompcmd.
+   *
+   * @param input the input into the command
+   */
   public BlueCompCmd(Scanner input) {
     super(input);
   }

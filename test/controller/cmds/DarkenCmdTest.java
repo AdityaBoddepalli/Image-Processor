@@ -1,12 +1,22 @@
 package controller.cmds;
 
-import org.junit.Test;
+import java.util.Scanner;
 
-import static org.junit.Assert.*;
+/**
+ * Tests a specific instance of abstract commands.
+ */
+public class DarkenCmdTest extends AbstractCmdTest {
 
-public class DarkenCmdTest {
+  /**
+   * Creates an instance to abstract test.
+   */
+  public DarkenCmdTest() {
+    super(new Scanner("koala blue-koala 32"), "koala"
+            , "Command: darken koala blue-koala 32\n");
+  }
 
-  @Test
-  public void specificCommand() {
+  @Override
+  protected ImageProcessorCmds createCmd(Scanner input) {
+    return new DarkenCmd(input);
   }
 }

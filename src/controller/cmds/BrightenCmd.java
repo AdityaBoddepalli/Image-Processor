@@ -2,11 +2,19 @@ package controller.cmds;
 
 import java.util.Scanner;
 
-import javax.naming.InsufficientResourcesException;
 
 import model.ImageProcessor;
 
+/**
+ * The command that executes a brightened image.
+ */
 public class BrightenCmd extends AbstractCmd {
+
+  /**
+   * Constructs a brightencmd.
+   *
+   * @param input the input into the command
+   */
   public BrightenCmd(Scanner input) {
     super(input);
   }

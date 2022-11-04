@@ -1,12 +1,24 @@
 package controller.cmds;
 
-import org.junit.Test;
+import java.util.Scanner;
 
-import static org.junit.Assert.*;
 
-public class HorizFlipCmdTest {
+/**
+ * Tests a specific instance of abstract commands.
+ */
+public class HorizFlipCmdTest extends AbstractCmdTest {
 
-  @Test
-  public void specificCommand() {
+
+  /**
+   * Creates an instance to abstract test.
+   */
+  public HorizFlipCmdTest() {
+    super(new Scanner("koala blue-koala"), "koala"
+            , "Command: flip-horizontal koala blue-koala\n");
+  }
+
+  @Override
+  protected ImageProcessorCmds createCmd(Scanner input) {
+    return new HorizFlipCmd(input);
   }
 }

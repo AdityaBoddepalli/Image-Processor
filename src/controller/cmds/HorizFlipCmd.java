@@ -4,7 +4,15 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+/**
+ * The command that horizontally flips.
+ */
 public class HorizFlipCmd extends AbstractCmd {
+  /**
+   * Constructs a horizflipcmd.
+   *
+   * @param input the input into the command
+   */
   public HorizFlipCmd(Scanner input) {
     super(input);
   }

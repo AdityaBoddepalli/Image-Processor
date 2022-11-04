@@ -1,5 +1,9 @@
 package model;
 
+
+/**
+ * Interface representing the operations and observations on an image of pixels.
+ */
 public interface PixelImage {
 
   /**
@@ -13,6 +17,7 @@ public interface PixelImage {
 
   /**
    * Returns the number of rows of pixels in this image.
+   *
    * @return the height
    */
   int getHeight();
@@ -20,18 +25,21 @@ public interface PixelImage {
 
   /**
    * Returns the number of columns of pixels in this image.
+   *
    * @return the width
    */
   int getWidth();
 
   /**
    * Returns the maximum numeric value a pixel in this PixelImage can have.
+   *
    * @return an integer representing the max value.
    */
   int getMaxValue();
 
   /**
    * Visualizes the image as a color-scaled image.
+   *
    * @param color the color to grayscale
    * @return a new PixelImage in blue scale.
    */
@@ -40,6 +48,7 @@ public interface PixelImage {
 
   /**
    * Visualizes the given image in greyscale according to the specified type.
+   *
    * @param type the type of greyscale - value, intensity or luma
    * @return a new Image greyscaled accordingly.
    */
@@ -63,7 +72,8 @@ public interface PixelImage {
   PixelImage adjustBrightness(int factor);
 
   /**
-   * Saves this image to the given path
+   * Saves this image to the given path.
+   *
    * @param path the path to save to.
    */
   void saveImg(String path);

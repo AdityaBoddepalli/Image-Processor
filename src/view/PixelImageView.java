@@ -2,6 +2,10 @@ package view;
 
 import java.io.IOException;
 
+
+/**
+ * The view to communicate with the user.
+ */
 public interface PixelImageView {
 
   /**
