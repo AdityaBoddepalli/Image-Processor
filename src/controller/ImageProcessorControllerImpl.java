@@ -85,12 +85,17 @@ public class ImageProcessorControllerImpl implements ImageProcessorController {
           Function<Scanner, ImageProcessorCmds> fetchCmd =
                   this.knownCommands.getOrDefault(userInput, null);
           if (fetchCmd == null) {
-            this.view.transmitMessage("Invalid Command");
+            this.view.transmitMessage("Invalid Command: " + userInput + ", Try again.\n");
             continue;
           } else {
             cmd = fetchCmd.apply(inputScan);
-            cmd.execute(this.model);
-            this.view.transmitMessage(String.format("%s: Success.\n", userInput));
+            try {
+              cmd.execute(this.model);
+              this.view.transmitMessage(String.format("%s: Success.\n", userInput));
+            } catch (IllegalArgumentException e) {
+              this.view.transmitMessage(e.getMessage());
+              this.view.transmitMessage("\n");
+            }
           }
         }
         this.view.transmitMessage("End of input\n" +
@@ -100,8 +105,6 @@ public class ImageProcessorControllerImpl implements ImageProcessorController {
       }
     } catch (IOException e) {
       throw new IllegalStateException("Could not transmit to the view for some reason.");
-    } catch (IllegalArgumentException e) {
-      throw new IllegalStateException(e.getMessage());
     }
   }
 }

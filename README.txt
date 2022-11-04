@@ -38,7 +38,7 @@ Classes: A command class for every command listed below and an abstract class th
 
 --------------------------------------------------------------------------------------------------------------
 
-Commands:
+Commands(all filepaths are relative to the project directory):
 
 To do this                                     - Type this
 
@@ -52,8 +52,13 @@ Horizontal Flip                                - flip-horizontal imagename destn
 Brighten Image                                 - brighten imagename destname factor
 Darken Image                                   - darken imagename destname factor
 Save Image                                     - save filepath imagename
+--------------------------------------------------------------------------------------------------------------
+The commands can be entered via an interactive terminal (on default, when run with no cmd line arguments),
+or via a script file with the filePath as a string in the first cmd line argument.
 
-
+To quit the image processor type 'q' or 'quit' irrespective of the case. The process also quits at the end of
+file when given a script as a command line argument.
 --------------------------------------------------------------------------------------------------------------
 
-Citation for the ramen image: Shot on iPhone (by me).
+All the ppm files in the res folder have been created by the authors, and they are authorizing its use
+in this project.

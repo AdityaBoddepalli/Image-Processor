@@ -68,18 +68,18 @@ public class ImageProcessorControllerImplTest {
     this.initData();
     StringBuilder out = new StringBuilder();
     view1 = new TerminalView(out);
-    StringReader in = new StringReader("load res/Koala.ppm koala " +
-            "red-component koala koala " +
-            "green-component koala koala " +
-            "blue-component koala koala " +
-            "greyscale koala koala value " +
-            "greyscale koala koala intensity " +
-            "greyscale koala koala luma " +
-            "flip-vertical koala koala " +
-            "flip-horizontal koala koala " +
-            "brighten koala koala 20 " +
-            "darken koala koala 10 " +
-            "save res/processed-koala.ppm koala ");
+    StringReader in = new StringReader("load res/modern-art.ppm modart " +
+            "red-component modart modart " +
+            "green-component modart modart " +
+            "blue-component modart modart " +
+            "greyscale modart modart value " +
+            "greyscale modart modart intensity " +
+            "greyscale modart modart luma " +
+            "flip-vertical modart modart " +
+            "flip-horizontal modart modart " +
+            "brighten modart modart 20 " +
+            "darken modart modart 10 " +
+            "save res/processed-modern-art.ppm modart ");
     controller1 = new ImageProcessorControllerImpl(imgPro1, view1, in);
     controller1.startProcessing();
     assertEquals("Welcome to Image Processor\n" +
@@ -105,8 +105,8 @@ public class ImageProcessorControllerImplTest {
     this.initData();
     StringBuilder out = new StringBuilder();
     view1 = new TerminalView(out);
-    StringReader in = new StringReader("load res/Koala.ppm koala " +
-            "red-component koala koala " +
+    StringReader in = new StringReader("load res/modern-art.ppm modart " +
+            "red-component modart modart " +
             "Quit");
     controller1 = new ImageProcessorControllerImpl(imgPro1, view1, in);
     controller1.startProcessing();
@@ -124,32 +124,32 @@ public class ImageProcessorControllerImplTest {
     StringBuilder doNotCareOutput = new StringBuilder();
     StringBuilder log = new StringBuilder();
     view1 = new TerminalView(doNotCareOutput);
-    StringReader in = new StringReader("load res/Koala.ppm koala " +
-            "red-component koala koala " +
-            "green-component koala koala " +
-            "blue-component koala koala " +
-            "greyscale koala koala value " +
-            "greyscale koala koala intensity " +
-            "greyscale koala koala luma " +
-            "flip-vertical koala koala " +
-            "flip-horizontal koala koala " +
-            "brighten koala koala 20 " +
-            "darken koala koala 10 " +
-            "save res/processed-koala.ppm koala ");
+    StringReader in = new StringReader("load res/modern-art.ppm modart " +
+            "red-component modart modart " +
+            "green-component modart modart " +
+            "blue-component modart modart " +
+            "greyscale modart modart value " +
+            "greyscale modart modart intensity " +
+            "greyscale modart modart luma " +
+            "flip-vertical modart modart " +
+            "flip-horizontal modart modart " +
+            "brighten modart modart 20 " +
+            "darken modart modart 10 " +
+            "save res/processed-modern-art.ppm modart ");
     controller1 = new ImageProcessorControllerImpl(new ConfirmInputsModel(log), view1, in);
     controller1.startProcessing();
-    assertEquals("Command: load res/Koala.ppm koala\n" +
-            "Command: red-component koala koala\n" +
-            "Command: green-component koala koala\n" +
-            "Command: blue-component koala koala\n" +
-            "Command: greyscale koala koala value\n" +
-            "Command: greyscale koala koala intensity\n" +
-            "Command: greyscale koala koala luma\n" +
-            "Command: flip-vertical koala koala\n" +
-            "Command: flip-horizontal koala koala\n" +
-            "Command: brighten koala koala 20\n" +
-            "Command: darken koala koala 10\n" +
-            "Command: save res/processed-koala.ppm koala\n", log.toString());
+    assertEquals("Command: load res/modern-art.ppm modart\n" +
+            "Command: red-component modart modart\n" +
+            "Command: green-component modart modart\n" +
+            "Command: blue-component modart modart\n" +
+            "Command: greyscale modart modart value\n" +
+            "Command: greyscale modart modart intensity\n" +
+            "Command: greyscale modart modart luma\n" +
+            "Command: flip-vertical modart modart\n" +
+            "Command: flip-horizontal modart modart\n" +
+            "Command: brighten modart modart 20\n" +
+            "Command: darken modart modart 10\n" +
+            "Command: save res/processed-modern-art.ppm modart\n", log.toString());
 
   }
 }

@@ -40,8 +40,8 @@ public class BasicImageProcessorTest {
   @Test
   public void loadImage() {
     this.initData();
-    imgpro1.loadImage("res/chess3.ppm", "simple koala");
-    PixelImage chess3 = imgpro1.getLoadedImg("simple koala");
+    imgpro1.loadImage("res/chess3.ppm", "simple chess");
+    PixelImage chess3 = imgpro1.getLoadedImg("simple chess");
 
     assertEquals(new StdPixel(0, 0, 0, 255),
             chess3.getPixelAt(0, 0));

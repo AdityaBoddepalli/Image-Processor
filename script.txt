@@ -1,4 +1,4 @@
-load res/ramensticker.ppm ramen
-flip-vertical ramen flippedramen
-red-component flippedramen redflippedramen
-save res/newramensticker.ppm redflippedramen
+load res/modern-art.ppm art
+flip-vertical art vert-art
+red-component vert-art red-vert-art
+save res/new-modern-art.ppm red-vert-art
