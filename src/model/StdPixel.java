@@ -4,7 +4,6 @@ import java.util.Objects;
 
 /**
  * An implementation of Pixel with RGB and max pixel value.
- *
  * Representing a Pixel with its 3 primary color values was the best design we could think of
  * as it made most of the operations on our image processor easier.
  */

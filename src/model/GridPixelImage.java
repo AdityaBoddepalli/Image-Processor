@@ -8,7 +8,6 @@ import java.util.Objects;
 
 /**
  * An implementation of a PixelImage with a 2D Pixel array.
- * <p>
  * A 2d array design choice seemed optimal to us as a grid is the most basic representation
  * of an image and the runtime of array operations make them perfect for handling large scale
  * images.
