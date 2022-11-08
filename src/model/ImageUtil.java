@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -41,5 +42,12 @@ public class ImageUtil {
 
   }
 
+  public static PixelImage bufferedToPixel(BufferedImage buff) {
+    return null;
+  }
+
+  public static BufferedImage pixelToBuffered(PixelImage pixel) {
+    return null;
+  }
 }
 

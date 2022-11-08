@@ -185,4 +185,28 @@ public class BasicImageProcessor implements ImageProcessor {
     this.ensureKey(imgName);
     return this.images.get(imgName);
   }
+
+  /**
+   * Creates a new image based on the filter applied to the given image.
+   *
+   * @param imgName  the img to filter
+   * @param destName the filtered img
+   * @param type     the type of filter - blur and sharpen
+   */
+  @Override
+  public void filterImage(String imgName, String destName, String type) {
+
+  }
+
+  /**
+   * Creates a new image based on the transformation applied to the given image.
+   *
+   * @param imgName  the img to transform
+   * @param destName the transformed img
+   * @param type     the type of transformation - greyscale and sepia
+   */
+  @Override
+  public void colorTrans(String imgName, String destName, String type) {
+
+  }
 }

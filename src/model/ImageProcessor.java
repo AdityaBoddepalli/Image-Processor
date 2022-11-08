@@ -83,9 +83,27 @@ public interface ImageProcessor {
    * Return a map of the images loaded so for with their names.
    *
    * @param imgName the img name
-   * @return a img with the given name
+   * @return an img with the given name
    */
   PixelImage getLoadedImg(String imgName);
+
+  /**
+   * Creates a new image based on the filter applied to the given image.
+   *
+   * @param imgName  the img to filter
+   * @param destName the filtered img
+   * @param type     the type of filter - blur and sharpen
+   */
+  void filterImage(String imgName, String destName, String type);
+
+  /**
+   * Creates a new image based on the transformation applied to the given image.
+   *
+   * @param imgName  the img to transform
+   * @param destName the transformed img
+   * @param type     the type of transformation - greyscale and sepia
+   */
+  void colorTrans(String imgName, String destName, String type);
 
 
 }
