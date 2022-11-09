@@ -48,5 +48,7 @@ public interface Pixel {
    */
   Pixel brighten(int factor);
 
+  int normalize(int colorValue);
+
 
 }

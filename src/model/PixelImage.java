@@ -77,4 +77,19 @@ public interface PixelImage {
    * @param path the path to save to.
    */
   void saveImg(String path);
+
+  /**
+   * Filters this image according to the type.
+   * @param type the type of filter
+   * @return a new pixel image that is filtered
+   */
+  PixelImage filter(String type);
+
+  /**
+   * Is the given posn within the valid boundaries of the image.
+   * @param row row
+   * @param col col
+   * @return true if valid.
+   */
+  boolean isValidPxl(int row, int col);
 }

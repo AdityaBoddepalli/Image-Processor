@@ -146,7 +146,7 @@ public class ConfirmInputsModel implements ImageProcessor {
    * @param imgName  the image to save
    */
   @Override
-  public void saveToPPM(String fileName, String imgName) {
+  public void saveImage(String fileName, String imgName) {
     try {
       log.append(String.format("Command: save %s %s\n", fileName, imgName));
     } catch (IOException e) {
@@ -163,5 +163,21 @@ public class ConfirmInputsModel implements ImageProcessor {
   @Override
   public PixelImage getLoadedImg(String imgName) {
     return null;
+  }
+
+  /**
+   * Creates a new image based on the filter applied to the given image.
+   *
+   * @param imgName  the img to filter
+   * @param destName the filtered img
+   * @param type     the type of filter - blur and sharpen
+   */
+  @Override
+  public void filterImage(String imgName, String destName, String type) {
+    try {
+      log.append(String.format("Command: filter %s %s %s\n", imgName, destName, type));
+    } catch (IOException e) {
+      throw new IllegalArgumentException(e);
+    }
   }
 }

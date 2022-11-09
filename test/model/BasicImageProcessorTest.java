@@ -3,6 +3,7 @@ package model;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
@@ -20,9 +21,11 @@ public class BasicImageProcessorTest {
    * Inits the data.
    */
   @Before
-  public void initData() {
+  public void initData() throws IOException {
     imgpro1 = new BasicImageProcessor(new HashMap<String, PixelImage>());
     imgpro1.loadImage("res/masterTester.ppm", "master");
+    imgpro1.loadImage("res/giyu.png", "giyu");
+
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -31,14 +34,14 @@ public class BasicImageProcessorTest {
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testEnsureKey() {
+  public void testEnsureKey() throws IOException {
     this.initData();
     imgpro1.getLoadedImg("deez");
   }
 
 
   @Test
-  public void loadImage() {
+  public void loadImage() throws IOException {
     this.initData();
     imgpro1.loadImage("res/chess3.ppm", "simple chess");
     PixelImage chess3 = imgpro1.getLoadedImg("simple chess");
@@ -64,7 +67,7 @@ public class BasicImageProcessorTest {
   }
 
   @Test
-  public void redComponent() {
+  public void redComponent() throws IOException {
     this.initData();
     imgpro1.redComponent("master", "master red");
     PixelImage masterRed = imgpro1.getLoadedImg("master red");
@@ -91,7 +94,7 @@ public class BasicImageProcessorTest {
   }
 
   @Test
-  public void greComponent() {
+  public void greComponent() throws IOException {
     this.initData();
     imgpro1.greComponent("master", "master green");
     PixelImage masterGreen = imgpro1.getLoadedImg("master green");
@@ -117,7 +120,7 @@ public class BasicImageProcessorTest {
   }
 
   @Test
-  public void bluComponent() {
+  public void bluComponent() throws IOException {
     this.initData();
     imgpro1.bluComponent("master", "master blue");
     PixelImage masterBlue = imgpro1.getLoadedImg("master blue");
@@ -143,7 +146,7 @@ public class BasicImageProcessorTest {
   }
 
   @Test
-  public void visValue() {
+  public void visValue() throws IOException {
     this.initData();
     imgpro1.visGreyscale("master", "master value", "value");
     PixelImage masterValue = imgpro1.getLoadedImg("master value");
@@ -169,7 +172,7 @@ public class BasicImageProcessorTest {
   }
 
   @Test
-  public void visIntensity() {
+  public void visIntensity() throws IOException {
     this.initData();
     imgpro1.visGreyscale("master", "master intensity", "intensity");
     PixelImage masterIntensity = imgpro1.getLoadedImg("master intensity");
@@ -195,7 +198,7 @@ public class BasicImageProcessorTest {
   }
 
   @Test
-  public void visLuma() {
+  public void visLuma() throws IOException {
     this.initData();
     imgpro1.visGreyscale("master", "master luma", "luma");
     PixelImage masterLuma = imgpro1.getLoadedImg("master luma");
@@ -222,7 +225,7 @@ public class BasicImageProcessorTest {
   }
 
   @Test
-  public void flipImageHoriz() {
+  public void flipImageHoriz() throws IOException {
     this.initData();
     imgpro1.flipImage("master", "master horiz", "horizontal");
     PixelImage masterHoriz = imgpro1.getLoadedImg("master horiz");
@@ -249,7 +252,7 @@ public class BasicImageProcessorTest {
   }
 
   @Test
-  public void flipImageVert() {
+  public void flipImageVert() throws IOException {
     this.initData();
     imgpro1.flipImage("master", "master vert", "vertical");
     PixelImage masterVert = imgpro1.getLoadedImg("master vert");
@@ -276,7 +279,7 @@ public class BasicImageProcessorTest {
   }
 
   @Test
-  public void flipTwice() {
+  public void flipTwice() throws IOException {
     this.initData();
     imgpro1.flipImage("master", "master vert", "vertical");
     imgpro1.flipImage("master vert", "master flip2", "horizontal");
@@ -304,7 +307,7 @@ public class BasicImageProcessorTest {
   }
 
   @Test
-  public void imageBrighten() {
+  public void imageBrighten() throws IOException {
     this.initData();
     imgpro1.adjustBrightness("master", 10, "master bright");
     PixelImage masterBright = imgpro1.getLoadedImg("master bright");
@@ -330,7 +333,7 @@ public class BasicImageProcessorTest {
   }
 
   @Test
-  public void imageDarken() {
+  public void imageDarken() throws IOException {
     this.initData();
     imgpro1.adjustBrightness("master", -10, "master dark");
     PixelImage masterDark = imgpro1.getLoadedImg("master dark");
@@ -356,10 +359,10 @@ public class BasicImageProcessorTest {
   }
 
   @Test
-  public void saveToPPM() {
+  public void saveToPPM() throws IOException {
     this.initData();
     imgpro1.adjustBrightness("master", -10, "master dark");
-    imgpro1.saveToPPM("res/master-dark.ppm", "master dark");
+    imgpro1.saveImage("res/master-dark.ppm", "master dark");
     imgpro1.loadImage("res/master-dark.ppm", "master dark 2");
 
     assertEquals(imgpro1.getLoadedImg("master dark"),

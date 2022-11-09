@@ -1,5 +1,6 @@
 package controller.cmds;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import model.ImageProcessor;
@@ -26,6 +27,10 @@ public class LoadCmd extends AbstractCmd {
    */
   @Override
   protected void specificCommand(String imgName, String destName, ImageProcessor imgPro) {
-    imgPro.loadImage(imgName, destName);
+    try {
+      imgPro.loadImage(imgName, destName);
+    } catch (IOException e) {
+      throw new IllegalArgumentException(e.getMessage());
+    }
   }
 }

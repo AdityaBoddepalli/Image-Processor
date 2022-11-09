@@ -186,4 +186,9 @@ public class GridPixelImageTest {
     assertEquals("20", image.next());
     assertEquals("0", image.next());
   }
+
+  @Test
+  public void filter() {
+
+  }
 }

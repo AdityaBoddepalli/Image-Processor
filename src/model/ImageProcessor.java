@@ -1,5 +1,7 @@
 package model;
 
+import java.io.IOException;
+
 /**
  * Representing the operations and observations that preserve the original PixelImage.
  */
@@ -12,7 +14,7 @@ public interface ImageProcessor {
    * @param imgPath the file path
    * @param imgName the name of the image.
    */
-  void loadImage(String imgPath, String imgName);
+  void loadImage(String imgPath, String imgName) throws IOException;
 
 
   /**
@@ -76,7 +78,7 @@ public interface ImageProcessor {
    * @param fileName the file to save up
    * @param imgName  the image to save
    */
-  void saveToPPM(String fileName, String imgName);
+  void saveImage(String fileName, String imgName) throws IOException;
 
 
   /**
@@ -95,15 +97,6 @@ public interface ImageProcessor {
    * @param type     the type of filter - blur and sharpen
    */
   void filterImage(String imgName, String destName, String type);
-
-  /**
-   * Creates a new image based on the transformation applied to the given image.
-   *
-   * @param imgName  the img to transform
-   * @param destName the transformed img
-   * @param type     the type of transformation - greyscale and sepia
-   */
-  void colorTrans(String imgName, String destName, String type);
 
 
 }

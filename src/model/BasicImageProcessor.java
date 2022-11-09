@@ -1,8 +1,13 @@
 package model;
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
 
 
 /**
@@ -31,31 +36,37 @@ public class BasicImageProcessor implements ImageProcessor {
    * @param imgName the name of the image.
    */
   @Override
-  public void loadImage(String imgPath, String imgName) {
-    Scanner imgScanner = ImageUtil.readPPM(imgPath);
-    String token;
-    token = imgScanner.next();
-    if (!token.equals("P3")) {
-      throw new IllegalArgumentException("Invalid PPM file: plain RAW file should begin with P3");
-    }
+  public void loadImage(String imgPath, String imgName) throws IOException {
+    PixelImage image;
 
-    int width = imgScanner.nextInt();
-    int height = imgScanner.nextInt();
-    int maxVal = imgScanner.nextInt();
-
-    Pixel[][] grid = new Pixel[height][width];
-
-    for (int row = 0; row < height; row++) {
-      for (int col = 0; col < width; col++) {
-        int r = imgScanner.nextInt();
-        int g = imgScanner.nextInt();
-        int b = imgScanner.nextInt();
-
-        Pixel p = new StdPixel(r, g, b, maxVal);
-        grid[row][col] = p;
+    if (!imgPath.substring(imgPath.length() - 4, imgPath.length()).equals(".ppm")) {
+      image = ImageUtil.bufferedToPixel(ImageIO.read(new FileInputStream(imgPath)));
+    } else {
+      Scanner imgScanner = ImageUtil.readPPM(imgPath);
+      String token;
+      token = imgScanner.next();
+      if (!token.equals("P3")) {
+        throw new IllegalArgumentException("Invalid PPM file: plain RAW file should begin with P3");
       }
+
+      int width = imgScanner.nextInt();
+      int height = imgScanner.nextInt();
+      int maxVal = imgScanner.nextInt();
+
+      Pixel[][] grid = new Pixel[height][width];
+
+      for (int row = 0; row < height; row++) {
+        for (int col = 0; col < width; col++) {
+          int r = imgScanner.nextInt();
+          int g = imgScanner.nextInt();
+          int b = imgScanner.nextInt();
+
+          Pixel p = new StdPixel(r, g, b, maxVal);
+          grid[row][col] = p;
+        }
+      }
+      image = new GridPixelImage(grid, height, width);
     }
-    PixelImage image = new GridPixelImage(grid, height, width);
 
     this.images.put(imgName, image);
 
@@ -169,9 +180,27 @@ public class BasicImageProcessor implements ImageProcessor {
    * @param imgName  the image to save
    */
   @Override
-  public void saveToPPM(String fileName, String imgName) {
+  public void saveImage(String fileName, String imgName) throws IOException {
     this.ensureKey(imgName);
-    this.images.get(imgName).saveImg(fileName);
+    PixelImage img = this.images.get(imgName);
+    String imgFormat = this.getImageFormat(fileName);
+    if (!fileName.substring(fileName.length() - 4, fileName.length()).equals(".ppm")) {
+      File output = new File(fileName);
+      ImageIO.write(ImageUtil.pixelToBuffered(img), imgFormat, output);
+
+    } else {
+      img.saveImg(fileName);
+    }
+
+  }
+
+  private String getImageFormat(String fileName) {
+    for (int i = fileName.length() - 1; i >= 0; i--) {
+      if(fileName.charAt(i) == '.') {
+        return fileName.substring(i + 1);
+      }
+    }
+    throw new IllegalArgumentException("Filename doesnt have an extension");
   }
 
   /**
@@ -195,18 +224,9 @@ public class BasicImageProcessor implements ImageProcessor {
    */
   @Override
   public void filterImage(String imgName, String destName, String type) {
-
+    this.ensureKey(imgName);
+    PixelImage editedImage = this.images.get(imgName).filter(type);
+    this.images.put(destName, editedImage);
   }
 
-  /**
-   * Creates a new image based on the transformation applied to the given image.
-   *
-   * @param imgName  the img to transform
-   * @param destName the transformed img
-   * @param type     the type of transformation - greyscale and sepia
-   */
-  @Override
-  public void colorTrans(String imgName, String destName, String type) {
-
-  }
 }

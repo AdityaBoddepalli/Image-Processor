@@ -1,19 +1,16 @@
 package controller.cmds;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import model.ImageProcessor;
 
-/**
- * The command that saves an image.
- */
-public class SaveCmd extends AbstractCmd {
+public class BlurCmd extends AbstractCmd {
   /**
-   * Constructs a savecmd.
-   * @param input the input into the command.
+   * Constructs an Abstract Cmd.
+   *
+   * @param input input into the command.
    */
-  public SaveCmd(Scanner input) {
+  public BlurCmd(Scanner input) {
     super(input);
   }
 
@@ -26,10 +23,6 @@ public class SaveCmd extends AbstractCmd {
    */
   @Override
   protected void specificCommand(String imgName, String destName, ImageProcessor imgPro) {
-    try {
-      imgPro.saveImage(imgName, destName);
-    } catch (IOException e) {
-      throw new IllegalArgumentException(e.getMessage());
-    }
+    imgPro.filterImage(imgName, destName, "blur");
   }
 }

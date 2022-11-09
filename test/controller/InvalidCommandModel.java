@@ -101,7 +101,7 @@ public class InvalidCommandModel implements ImageProcessor {
    * @param imgName  the image to save
    */
   @Override
-  public void saveToPPM(String fileName, String imgName) {
+  public void saveImage(String fileName, String imgName) {
     throw new IllegalArgumentException("get flounced");
 
   }
@@ -116,5 +116,17 @@ public class InvalidCommandModel implements ImageProcessor {
   public PixelImage getLoadedImg(String imgName) {
     throw new IllegalArgumentException("get flounced");
 
+  }
+
+  /**
+   * Creates a new image based on the filter applied to the given image.
+   *
+   * @param imgName  the img to filter
+   * @param destName the filtered img
+   * @param type     the type of filter - blur and sharpen
+   */
+  @Override
+  public void filterImage(String imgName, String destName, String type) {
+    throw new IllegalArgumentException("get flounced");
   }
 }

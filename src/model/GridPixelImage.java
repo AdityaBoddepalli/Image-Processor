@@ -3,7 +3,16 @@ package model;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
+import java.util.function.Supplier;
+
+import model.filters.BlurMatrix;
+import model.filters.GreyscaleMatrix;
+import model.filters.MatrixFunction;
+import model.filters.SepiaMatrix;
+import model.filters.SharpenMatrix;
 
 
 /**
@@ -21,6 +30,9 @@ public class GridPixelImage implements PixelImage {
   private final int width;
 
 
+  private final Map<String, Supplier<MatrixFunction>> filMap;
+
+
   /**
    * Constructs a GridPixelImage.
    *
@@ -35,6 +47,12 @@ public class GridPixelImage implements PixelImage {
     this.imageGrid = imageGrid;
     this.height = height;
     this.width = width;
+
+    filMap = new HashMap<>();
+    filMap.put("blur", () -> new MatrixFunction(this, new BlurMatrix()));
+    filMap.put("sharpen", () -> new MatrixFunction(this, new SharpenMatrix()));
+    filMap.put("greyscale", () -> new MatrixFunction(this, new GreyscaleMatrix()));
+    filMap.put("sepia", () -> new MatrixFunction(this, new SepiaMatrix()));
   }
 
   /**
@@ -46,8 +64,7 @@ public class GridPixelImage implements PixelImage {
    */
   @Override
   public Pixel getPixelAt(int row, int col) {
-    if ((row >= 0 && row < this.getHeight())
-            && (col >= 0 && col < this.getWidth())) {
+    if (this.isValidPxl(row, col)) {
       return this.imageGrid[row][col];
     } else {
       throw new IllegalArgumentException();
@@ -211,6 +228,37 @@ public class GridPixelImage implements PixelImage {
     } catch (IOException e) {
       throw new IllegalStateException("Couldn't write to file");
     }
+  }
+
+  /**
+   * Filters this image according to the type.
+   *
+   * @param type the type of filter
+   * @return a new pixel image that is filtered
+   */
+  @Override
+  public PixelImage filter(String type) {
+     this.ensureKey(filMap, type);
+     return filMap.get(type).get().filterify();
+  }
+
+  private <T> void ensureKey(Map<String, T> filMap, String type) {
+    if(!filMap.containsKey(type)) {
+      throw new IllegalArgumentException("invalid filtering operation");
+    }
+  }
+
+
+  /**
+   * Is the given posn within the valid boundaries of the image.
+   *
+   * @param row row
+   * @param col col
+   * @return true if valid.
+   */
+  @Override
+  public boolean isValidPxl(int row, int col) {
+    return (row >= 0 && row < this.height) && (col >= 0 && col < this.width);
   }
 
   @Override

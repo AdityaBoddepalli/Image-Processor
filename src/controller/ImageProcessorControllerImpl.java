@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.function.Function;
 
 import controller.cmds.BlueCompCmd;
+import controller.cmds.BlurCmd;
 import controller.cmds.BrightenCmd;
 import controller.cmds.DarkenCmd;
 import controller.cmds.GreenCompCmd;
@@ -16,8 +17,11 @@ import controller.cmds.ImageProcessorCmds;
 import controller.cmds.LoadCmd;
 import controller.cmds.RedCompCmd;
 import controller.cmds.SaveCmd;
+import controller.cmds.SepiaCmd;
+import controller.cmds.SharpenCmd;
 import controller.cmds.VertFlipCmd;
 import model.ImageProcessor;
+import model.filters.SepiaMatrix;
 import view.PixelImageView;
 
 /**
@@ -57,6 +61,9 @@ public class ImageProcessorControllerImpl implements ImageProcessorController {
     this.knownCommands.put("brighten", scanner -> new BrightenCmd(scanner));
     this.knownCommands.put("darken", scanner -> new DarkenCmd(scanner));
     this.knownCommands.put("save", scanner -> new SaveCmd(scanner));
+    this.knownCommands.put("blur", scanner -> new BlurCmd(scanner));
+    this.knownCommands.put("sharpen", scanner -> new SharpenCmd(scanner));
+    this.knownCommands.put("sepia", scanner -> new SepiaCmd(scanner));
   }
 
 

@@ -125,7 +125,7 @@ public class StdPixel implements Pixel {
    * @param colorVal the color to adjust
    * @return adjusted val
    */
-  private int normalize(int colorVal) {
+  public int normalize(int colorVal) {
     if (colorVal < 0) {
       return 0;
     } else if (colorVal > this.getMaxVal()) {
