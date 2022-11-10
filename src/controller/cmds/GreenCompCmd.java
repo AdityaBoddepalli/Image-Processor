@@ -26,6 +26,6 @@ public class GreenCompCmd extends AbstractCmd {
    */
   @Override
   protected void specificCommand(String imgName, String destName, ImageProcessor imgPro) {
-    imgPro.greComponent(imgName, destName);
+    imgPro.extractComponent(imgName, destName, "green");
   }
 }

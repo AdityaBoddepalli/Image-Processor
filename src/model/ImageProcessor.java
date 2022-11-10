@@ -18,28 +18,13 @@ public interface ImageProcessor {
 
 
   /**
-   * Visualizes the given image as a red-scaled image.
+   * Extracts the given component from the image.
    *
-   * @param imgName  the image to visualize
-   * @param destName the new image to save
+   * @param imgName  the image name
+   * @param destName name of the new image
+   * @param color    color to extract.
    */
-  void redComponent(String imgName, String destName);
-
-  /**
-   * Visualizes the image as a green-scaled image.
-   *
-   * @param imgName  the image to visualize
-   * @param destName the new image to save
-   */
-  void greComponent(String imgName, String destName);
-
-  /**
-   * Visualizes the image as a blue-scaled image.
-   *
-   * @param imgName  the image to visualize
-   * @param destName the new image to save
-   */
-  void bluComponent(String imgName, String destName);
+  public void extractComponent(String imgName, String destName, String color);
 
 
   /**

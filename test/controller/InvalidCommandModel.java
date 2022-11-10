@@ -20,40 +20,17 @@ public class InvalidCommandModel implements ImageProcessor {
   }
 
   /**
-   * Visualizes the given image as a red-scaled image.
+   * Extracts the given component from the image.
    *
-   * @param imgName  the image to visualize
-   * @param destName the new image to save
+   * @param imgName  the image name
+   * @param destName name of the new image
+   * @param color    color to extract.
    */
   @Override
-  public void redComponent(String imgName, String destName) {
+  public void extractComponent(String imgName, String destName, String color) {
     throw new IllegalArgumentException("get flounced");
-
   }
 
-  /**
-   * Visualizes the image as a green-scaled image.
-   *
-   * @param imgName  the image to visualize
-   * @param destName the new image to save
-   */
-  @Override
-  public void greComponent(String imgName, String destName) {
-    throw new IllegalArgumentException("get flounced");
-
-  }
-
-  /**
-   * Visualizes the image as a blue-scaled image.
-   *
-   * @param imgName  the image to visualize
-   * @param destName the new image to save
-   */
-  @Override
-  public void bluComponent(String imgName, String destName) {
-    throw new IllegalArgumentException("get flounced");
-
-  }
 
   /**
    * Visualizes the given image in greyscale according to the specified type.

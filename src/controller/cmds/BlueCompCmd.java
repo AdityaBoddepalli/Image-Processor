@@ -27,6 +27,6 @@ public class BlueCompCmd extends AbstractCmd {
    */
   @Override
   protected void specificCommand(String imgName, String destName, ImageProcessor imgPro) {
-    imgPro.bluComponent(imgName, destName);
+    imgPro.extractComponent(imgName, destName, "blue");
   }
 }

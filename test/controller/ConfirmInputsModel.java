@@ -39,49 +39,21 @@ public class ConfirmInputsModel implements ImageProcessor {
   }
 
   /**
-   * Visualizes the given image as a red-scaled image.
+   * Extracts the given component from the image.
    *
-   * @param imgName  the image to visualize
-   * @param destName the new image to save
+   * @param imgName  the image name
+   * @param destName name of the new image
+   * @param color    color to extract.
    */
   @Override
-  public void redComponent(String imgName, String destName) {
+  public void extractComponent(String imgName, String destName, String color) {
     try {
-      log.append(String.format("Command: red-component %s %s\n", imgName, destName));
+      log.append(String.format("Command: extract-component %s %s %s\n", imgName, destName, color));
     } catch (IOException e) {
       throw new IllegalArgumentException(e);
     }
   }
 
-  /**
-   * Visualizes the image as a green-scaled image.
-   *
-   * @param imgName  the image to visualize
-   * @param destName the new image to save
-   */
-  @Override
-  public void greComponent(String imgName, String destName) {
-    try {
-      log.append(String.format("Command: green-component %s %s\n", imgName, destName));
-    } catch (IOException e) {
-      throw new IllegalArgumentException(e);
-    }
-  }
-
-  /**
-   * Visualizes the image as a blue-scaled image.
-   *
-   * @param imgName  the image to visualize
-   * @param destName the new image to save
-   */
-  @Override
-  public void bluComponent(String imgName, String destName) {
-    try {
-      log.append(String.format("Command: blue-component %s %s\n", imgName, destName));
-    } catch (IOException e) {
-      throw new IllegalArgumentException(e);
-    }
-  }
 
   /**
    * Visualizes the given image in greyscale according to the specified type.

@@ -13,8 +13,8 @@ public class RedCompCmdTest extends AbstractCmdTest {
    * Creates an instance to abstract test.
    */
   public RedCompCmdTest() {
-    super(new Scanner("koala blue-koala"), "koala"
-            , "Command: red-component koala blue-koala\n");
+    super(new Scanner("koala blue-koala red"), "koala"
+            , "Command: extract-component koala blue-koala red\n");
   }
 
   @Override

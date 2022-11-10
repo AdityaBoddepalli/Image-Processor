@@ -4,17 +4,13 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
-/**
- * The command that executes a red component.
- */
-
-public class RedCompCmd extends AbstractCmd {
+public class ValueCmd extends AbstractCmd {
   /**
-   * Constructs a redcompcmd.
+   * Constructs an Abstract Cmd.
    *
-   * @param input the input into the command
+   * @param input input into the command.
    */
-  public RedCompCmd(Scanner input) {
+  public ValueCmd(Scanner input) {
     super(input);
   }
 
@@ -27,6 +23,8 @@ public class RedCompCmd extends AbstractCmd {
    */
   @Override
   protected void specificCommand(String imgName, String destName, ImageProcessor imgPro) {
-    imgPro.extractComponent(imgName, destName, "red");
+    String type = "value";
+    imgPro.visGreyscale(imgName, destName, type);
+
   }
 }

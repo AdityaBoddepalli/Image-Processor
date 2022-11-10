@@ -26,7 +26,6 @@ public class GreyscaleCmd extends AbstractCmd {
    */
   @Override
   protected void specificCommand(String imgName, String destName, ImageProcessor imgPro) {
-    String type = this.getNextInput();
-    imgPro.visGreyscale(imgName, destName, type);
+    imgPro.filterImage(imgName, destName, "greyscale");
   }
 }

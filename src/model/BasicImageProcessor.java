@@ -90,45 +90,12 @@ public class BasicImageProcessor implements ImageProcessor {
    * @param destName name of the new image
    * @param color    color to extract.
    */
-  private void extractComponent(String imgName, String destName, String color) {
+  public void extractComponent(String imgName, String destName, String color) {
     this.ensureKey(imgName);
     PixelImage editedImage = this.images.get(imgName).getComponent(color);
     this.images.put(destName, editedImage);
   }
 
-  /**
-   * Visualizes the given image as a red-scaled image.
-   *
-   * @param imgName  the image to visualize
-   * @param destName the new image to save
-   */
-  @Override
-  public void redComponent(String imgName, String destName) {
-    this.extractComponent(imgName, destName, "red");
-  }
-
-
-  /**
-   * Visualizes the image as a green-scaled image.
-   *
-   * @param imgName  the image to visualize
-   * @param destName the new image to save
-   */
-  @Override
-  public void greComponent(String imgName, String destName) {
-    this.extractComponent(imgName, destName, "green");
-  }
-
-  /**
-   * Visualizes the image as a blue-scaled image.
-   *
-   * @param imgName  the image to visualize
-   * @param destName the new image to save
-   */
-  @Override
-  public void bluComponent(String imgName, String destName) {
-    this.extractComponent(imgName, destName, "blue");
-  }
 
   /**
    * Visualizes the given image in greyscale according to the specified type.

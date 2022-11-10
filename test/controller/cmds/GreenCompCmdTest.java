@@ -12,8 +12,8 @@ public class GreenCompCmdTest extends AbstractCmdTest {
    * Creates an instance to abstract test.
    */
   public GreenCompCmdTest() {
-    super(new Scanner("koala blue-koala"), "koala"
-            , "Command: green-component koala blue-koala\n");
+    super(new Scanner("koala blue-koala green"), "koala"
+            , "Command: extract-component koala blue-koala green\n");
   }
 
   @Override

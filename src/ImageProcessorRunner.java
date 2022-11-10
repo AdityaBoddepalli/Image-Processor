@@ -15,12 +15,7 @@ import view.TerminalView;
  */
 public class ImageProcessorRunner {
 
-  /**
-   * Main method to run the img processor.
-   *
-   * @param args enter filepath as first argument if a script needs to be executed.
-   */
-  public static void main(String[] args) {
+  public static Readable getReadable(String[] args) {
     Readable input;
     if (args.length == 1) {
       try {
@@ -31,9 +26,19 @@ public class ImageProcessorRunner {
     } else {
       input = new InputStreamReader(System.in);
     }
+    return input;
+  }
+
+  /**
+   * Main method to run the img processor.
+   *
+   * @param args enter filepath as first argument if a script needs to be executed.
+   */
+  public static void main(String[] args) {
     ImageProcessor model = new BasicImageProcessor(new HashMap<>());
     PixelImageView view = new TerminalView();
-    ImageProcessorController controller = new ImageProcessorControllerImpl(model, view, input);
+    ImageProcessorController controller = new ImageProcessorControllerImpl(model,
+            view, getReadable(args));
     controller.startProcessing();
   }
 }

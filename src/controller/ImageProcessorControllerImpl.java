@@ -14,14 +14,16 @@ import controller.cmds.GreenCompCmd;
 import controller.cmds.GreyscaleCmd;
 import controller.cmds.HorizFlipCmd;
 import controller.cmds.ImageProcessorCmds;
+import controller.cmds.IntensityCmd;
 import controller.cmds.LoadCmd;
+import controller.cmds.LumaCmd;
 import controller.cmds.RedCompCmd;
 import controller.cmds.SaveCmd;
 import controller.cmds.SepiaCmd;
 import controller.cmds.SharpenCmd;
+import controller.cmds.ValueCmd;
 import controller.cmds.VertFlipCmd;
 import model.ImageProcessor;
-import model.filters.SepiaMatrix;
 import view.PixelImageView;
 
 /**
@@ -55,15 +57,18 @@ public class ImageProcessorControllerImpl implements ImageProcessorController {
     this.knownCommands.put("red-component", scanner -> new RedCompCmd(scanner));
     this.knownCommands.put("green-component", scanner -> new GreenCompCmd(scanner));
     this.knownCommands.put("blue-component", scanner -> new BlueCompCmd(scanner));
-    this.knownCommands.put("greyscale", scanner -> new GreyscaleCmd(scanner));
     this.knownCommands.put("flip-vertical", scanner -> new VertFlipCmd(scanner));
     this.knownCommands.put("flip-horizontal", scanner -> new HorizFlipCmd(scanner));
     this.knownCommands.put("brighten", scanner -> new BrightenCmd(scanner));
     this.knownCommands.put("darken", scanner -> new DarkenCmd(scanner));
+    this.knownCommands.put("value", scanner -> new ValueCmd(scanner));
+    this.knownCommands.put("intensity", scanner -> new IntensityCmd(scanner));
+    this.knownCommands.put("luma", scanner -> new LumaCmd(scanner));
     this.knownCommands.put("save", scanner -> new SaveCmd(scanner));
     this.knownCommands.put("blur", scanner -> new BlurCmd(scanner));
     this.knownCommands.put("sharpen", scanner -> new SharpenCmd(scanner));
     this.knownCommands.put("sepia", scanner -> new SepiaCmd(scanner));
+    this.knownCommands.put("greyscale", scanner -> new GreyscaleCmd(scanner));
   }
 
 

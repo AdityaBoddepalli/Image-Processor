@@ -13,8 +13,8 @@ public class GreyscaleCmdTest extends AbstractCmdTest {
    * Creates an instance to abstract test.
    */
   public GreyscaleCmdTest() {
-    super(new Scanner("koala blue-koala luma"), "koala"
-            , "Command: greyscale koala blue-koala luma\n");
+    super(new Scanner("koala blue-koala greyscale"), "koala"
+            , "Command: filter koala blue-koala greyscale\n");
   }
 
   @Override
