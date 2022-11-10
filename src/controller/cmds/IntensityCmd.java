@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+
+/**
+ * A command that calls the intensity method in the model.
+ */
 public class IntensityCmd extends AbstractCmd {
   /**
    * Constructs an Abstract Cmd.

@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+/**
+ * A command that calls the blur function in the model.
+ */
 public class BlurCmd extends AbstractCmd {
   /**
    * Constructs an Abstract Cmd.

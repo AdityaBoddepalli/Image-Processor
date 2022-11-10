@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+
+/**
+ * A command that calls the value method in the model.
+ */
 public class ValueCmd extends AbstractCmd {
   /**
    * Constructs an Abstract Cmd.

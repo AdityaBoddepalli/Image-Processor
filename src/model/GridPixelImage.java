@@ -238,12 +238,12 @@ public class GridPixelImage implements PixelImage {
    */
   @Override
   public PixelImage filter(String type) {
-     this.ensureKey(filMap, type);
-     return filMap.get(type).get().filterify();
+    this.ensureKey(filMap, type);
+    return filMap.get(type).get().filterify();
   }
 
   private <T> void ensureKey(Map<String, T> filMap, String type) {
-    if(!filMap.containsKey(type)) {
+    if (!filMap.containsKey(type)) {
       throw new IllegalArgumentException("invalid filtering operation");
     }
   }

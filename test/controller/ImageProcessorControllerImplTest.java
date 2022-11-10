@@ -72,13 +72,17 @@ public class ImageProcessorControllerImplTest {
             "red-component modart modart " +
             "green-component modart modart " +
             "blue-component modart modart " +
-            "greyscale modart modart value " +
-            "greyscale modart modart intensity " +
-            "greyscale modart modart luma " +
+            "value modart modart " +
+            "intensity modart modart " +
+            "luma modart modart " +
             "flip-vertical modart modart " +
             "flip-horizontal modart modart " +
             "brighten modart modart 20 " +
             "darken modart modart 10 " +
+            "blur modart modart " +
+            "sepia modart modart " +
+            "sharpen modart modart " +
+            "greyscale modart modart " +
             "save res/processed-modern-art.ppm modart ");
     controller1 = new ImageProcessorControllerImpl(imgPro1, view1, in);
     controller1.startProcessing();
@@ -87,13 +91,17 @@ public class ImageProcessorControllerImplTest {
             "red-component: Success.\n" +
             "green-component: Success.\n" +
             "blue-component: Success.\n" +
-            "greyscale: Success.\n" +
-            "greyscale: Success.\n" +
-            "greyscale: Success.\n" +
+            "value: Success.\n" +
+            "intensity: Success.\n" +
+            "luma: Success.\n" +
             "flip-vertical: Success.\n" +
             "flip-horizontal: Success.\n" +
             "brighten: Success.\n" +
             "darken: Success.\n" +
+            "blur: Success.\n" +
+            "sepia: Success.\n" +
+            "sharpen: Success.\n" +
+            "greyscale: Success.\n" +
             "save: Success.\n" +
             "End of input\n" +
             "Quit successfully\n" +
@@ -128,20 +136,24 @@ public class ImageProcessorControllerImplTest {
             "red-component modart modart " +
             "green-component modart modart " +
             "blue-component modart modart " +
-            "greyscale modart modart value " +
-            "greyscale modart modart intensity " +
-            "greyscale modart modart luma " +
+            "value modart modart " +
+            "intensity modart modart " +
+            "luma modart modart " +
             "flip-vertical modart modart " +
             "flip-horizontal modart modart " +
             "brighten modart modart 20 " +
             "darken modart modart 10 " +
+            "blur modart modart " +
+            "sepia modart modart " +
+            "sharpen modart modart " +
+            "greyscale modart modart " +
             "save res/processed-modern-art.ppm modart ");
     controller1 = new ImageProcessorControllerImpl(new ConfirmInputsModel(log), view1, in);
     controller1.startProcessing();
     assertEquals("Command: load res/modern-art.ppm modart\n" +
-            "Command: red-component modart modart\n" +
-            "Command: green-component modart modart\n" +
-            "Command: blue-component modart modart\n" +
+            "Command: extract-component modart modart red\n" +
+            "Command: extract-component modart modart green\n" +
+            "Command: extract-component modart modart blue\n" +
             "Command: greyscale modart modart value\n" +
             "Command: greyscale modart modart intensity\n" +
             "Command: greyscale modart modart luma\n" +
@@ -149,6 +161,10 @@ public class ImageProcessorControllerImplTest {
             "Command: flip-horizontal modart modart\n" +
             "Command: brighten modart modart 20\n" +
             "Command: darken modart modart 10\n" +
+            "Command: filter modart modart blur\n" +
+            "Command: filter modart modart sepia\n" +
+            "Command: filter modart modart sharpen\n" +
+            "Command: filter modart modart greyscale\n" +
             "Command: save res/processed-modern-art.ppm modart\n", log.toString());
 
   }

@@ -163,7 +163,7 @@ public class BasicImageProcessor implements ImageProcessor {
 
   private String getImageFormat(String fileName) {
     for (int i = fileName.length() - 1; i >= 0; i--) {
-      if(fileName.charAt(i) == '.') {
+      if (fileName.charAt(i) == '.') {
         return fileName.substring(i + 1);
       }
     }

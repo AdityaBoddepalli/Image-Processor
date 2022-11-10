@@ -24,7 +24,6 @@ public class BasicImageProcessorTest {
   public void initData() throws IOException {
     imgpro1 = new BasicImageProcessor(new HashMap<String, PixelImage>());
     imgpro1.loadImage("res/masterTester.ppm", "master");
-    imgpro1.loadImage("res/giyu.png", "giyu");
 
   }
 

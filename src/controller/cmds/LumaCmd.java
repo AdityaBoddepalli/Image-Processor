@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+/**
+ * A command that calls the luma method in the model.
+ */
 public class LumaCmd extends AbstractCmd {
   /**
    * Constructs an Abstract Cmd.

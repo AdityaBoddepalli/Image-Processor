@@ -1,7 +1,7 @@
 package model.filters;
 
 /**
- * A greyscale transformation matrix
+ * A sepia transformation matrix.
  */
 public class SepiaMatrix extends AbstractColorTransMatrix {
 

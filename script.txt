@@ -1,3 +1,0 @@
-load res/manhattan-small.png art
-sharpen art red-vert-art
-save res/newman.png red-vert-art

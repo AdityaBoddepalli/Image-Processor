@@ -15,6 +15,14 @@ import view.TerminalView;
  */
 public class ImageProcessorRunner {
 
+
+  /**
+   * Checks if there is a script in the first cmd line argument and parses it into a readable.
+   * defaults to System.in.
+   *
+   * @param args the command line args.
+   * @return A readable with the input.
+   */
   public static Readable getReadable(String[] args) {
     Readable input;
     if (args.length == 1) {

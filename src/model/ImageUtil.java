@@ -1,8 +1,7 @@
 package model;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -44,6 +43,12 @@ public class ImageUtil {
 
   }
 
+  /**
+   * Converts the given buffered image to a pixel image.
+   *
+   * @param buff the buffered image
+   * @return a pixelimage
+   */
   public static PixelImage bufferedToPixel(BufferedImage buff) {
     Pixel[][] newGrid = new Pixel[buff.getHeight()][buff.getWidth()];
     for (int row = 0; row < buff.getHeight(); row++) {
@@ -55,6 +60,13 @@ public class ImageUtil {
     return new GridPixelImage(newGrid, buff.getHeight(), buff.getWidth());
   }
 
+
+  /**
+   * Converts the given pixelimage to a buffered image.
+   *
+   * @param pixel the pixel image
+   * @return a buffered image
+   */
   public static BufferedImage pixelToBuffered(PixelImage pixel) {
     BufferedImage toRet = new BufferedImage(pixel.getWidth(), pixel.getHeight(),
             BufferedImage.TYPE_INT_RGB);

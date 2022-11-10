@@ -25,13 +25,13 @@ public class GridPixelImageTest {
    */
   private void initData() {
     pA1 = new Pixel[][]{{new StdPixel(10, 20, 30, 255),
-        new StdPixel(255, 100, 10, 255)},
-        {new StdPixel(0, 10, 20, 255),
-        new StdPixel(50, 30, 10, 255)}};
-    pA2 = new Pixel[][]{{new StdPixel(0, 100, 200, 255)},
-        {new StdPixel(100, 200, 255, 255)}};
+            new StdPixel(255, 100, 10, 255)}, {
+            new StdPixel(0, 10, 20, 255),
+            new StdPixel(50, 30, 10, 255)}};
+    pA2 = new Pixel[][]{{new StdPixel(0, 100, 200, 255)}, {
+            new StdPixel(100, 200, 255, 255)}};
     pA3 = new Pixel[][]{{new StdPixel(0, 0, 0, 500),
-        new StdPixel(255, 255, 255, 500)}};
+            new StdPixel(255, 255, 255, 500)}};
     pI1 = new GridPixelImage(pA1, 2, 2);
     pI2 = new GridPixelImage(pA2, 2, 1);
     pI3 = new GridPixelImage(pA3, 1, 2);
@@ -101,13 +101,13 @@ public class GridPixelImageTest {
     this.initData();
     assertEquals(new GridPixelImage(
             new Pixel[][]{{new StdPixel(10, 10, 10, 255),
-                    new StdPixel(255, 255, 255, 255)},
-              {new StdPixel(0, 0, 0, 255),
-                            new StdPixel(50, 50, 50, 255)}},
+                    new StdPixel(255, 255, 255, 255)}, {
+                    new StdPixel(0, 0, 0, 255),
+                    new StdPixel(50, 50, 50, 255)}},
             2, 2), pI1.getComponent("red"));
     assertEquals(new GridPixelImage(
-                    new Pixel[][]{{new StdPixel(100, 100, 100, 255)},
-                      {new StdPixel(200, 200, 200, 255)}},
+                    new Pixel[][]{{new StdPixel(100, 100, 100, 255)}, {
+                        new StdPixel(200, 200, 200, 255)}},
                     2, 1),
             pI2.getComponent("green"));
     assertEquals(new GridPixelImage(
@@ -121,14 +121,14 @@ public class GridPixelImageTest {
     this.initData();
     assertEquals(new GridPixelImage(new Pixel[][]{{new StdPixel(
                     30, 30, 30, 255),
-        new StdPixel(255, 255, 255, 255)},
-        {new StdPixel(20, 20, 20, 255),
-        new StdPixel(50, 50, 50, 255)}},
+            new StdPixel(255, 255, 255, 255)}, {
+            new StdPixel(20, 20, 20, 255),
+            new StdPixel(50, 50, 50, 255)}},
                     2, 2),
             pI1.visGreyscale("value"));
     assertEquals(new GridPixelImage(new Pixel[][]{{new StdPixel(
-            100, 100, 100, 255)},
-        {new StdPixel(185, 185, 185, 255)}},
+            100, 100, 100, 255)}, {
+            new StdPixel(185, 185, 185, 255)}},
             2, 1), pI2.visGreyscale("intensity"));
     assertEquals(new GridPixelImage(new Pixel[][]{{new StdPixel(
                     0, 0, 0, 500), new StdPixel(
@@ -139,11 +139,11 @@ public class GridPixelImageTest {
   @Test
   public void flipImage() {
     this.initData();
-    assertEquals(new GridPixelImage(new Pixel[][]{
-        {new StdPixel(0, 10, 20, 255), new StdPixel(
-                            50, 30, 10, 255)},
-        {new StdPixel(10, 20, 30, 255), new StdPixel(
-                            255, 100, 10, 255)}}, 2, 2),
+    assertEquals(new GridPixelImage(new Pixel[][]{{
+            new StdPixel(0, 10, 20, 255), new StdPixel(
+                    50, 30, 10, 255)}, {
+            new StdPixel(10, 20, 30, 255), new StdPixel(
+                    255, 100, 10, 255)}}, 2, 2),
             pI1.flipImage("vertical"));
     assertEquals(pI2, pI2.flipImage("horizontal"));
     assertEquals(pI3, pI3.flipImage("vertical"));
@@ -154,8 +154,8 @@ public class GridPixelImageTest {
     this.initData();
     assertEquals(pI1, pI1.adjustBrightness(0));
     assertEquals(new GridPixelImage(new Pixel[][]{{new StdPixel(
-            10, 110, 210, 255)},
-        {new StdPixel(110, 210, 255, 255)}},
+            10, 110, 210, 255)}, {
+            new StdPixel(110, 210, 255, 255)}},
             2, 1), pI2.adjustBrightness(10));
     assertEquals(new GridPixelImage(new Pixel[][]{{new StdPixel(
                     0, 0, 0, 500), new StdPixel(
@@ -189,6 +189,12 @@ public class GridPixelImageTest {
 
   @Test
   public void filter() {
+    this.initData();
+
+    assertEquals(new GridPixelImage(new Pixel[][]{{new StdPixel(
+                    32, 32, 32, 500), new StdPixel(
+                    64, 64, 64, 500)}}, 1, 2),
+            pI3.filter("blur"));
 
   }
 }

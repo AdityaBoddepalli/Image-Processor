@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+
+/**
+ * A command that calls the sharpen method in the model.
+ */
 public class SharpenCmd extends AbstractCmd {
   /**
    * Constructs an Abstract Cmd.

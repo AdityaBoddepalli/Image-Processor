@@ -12,7 +12,7 @@ public class ImageProcessorRunnerTest {
   @Test
   public void testGetInput() {
     String[] arguments = new String[1];
-    arguments[0] = "scriptTest.txt";
+    arguments[0] = "res/scriptTest.txt";
     String expected = "load res/giyu.png art\n" +
             "greyscale art red-vert\n" +
             "save res/newman1.png red-vert";

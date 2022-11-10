@@ -152,4 +152,15 @@ public class StdPixel implements Pixel {
   public int hashCode() {
     return Objects.hash(redVal, greVal, bluVal, maxVal);
   }
+
+
+  @Override
+  public String toString() {
+    return "StdPixel{" +
+            "redVal=" + redVal +
+            ", greVal=" + greVal +
+            ", bluVal=" + bluVal +
+            ", maxVal=" + maxVal +
+            '}';
+  }
 }

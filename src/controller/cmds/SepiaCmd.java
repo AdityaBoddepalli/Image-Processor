@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 import model.ImageProcessor;
 
+
+/**
+ * A command that calls the sepia method in the model.
+ */
 public class SepiaCmd extends AbstractCmd {
   /**
    * Constructs an Abstract Cmd.
