@@ -8,6 +8,7 @@ import controller.ImageProcessorControllerImpl;
 import model.BasicImageProcessor;
 import model.ImageProcessor;
 import view.PixelImageView;
+import view.SwingImageProcessor;
 import view.TerminalView;
 
 /**
@@ -43,10 +44,15 @@ public class ImageProcessorRunner {
    * @param args enter filepath as first argument if a script needs to be executed.
    */
   public static void main(String[] args) {
-    ImageProcessor model = new BasicImageProcessor(new HashMap<>());
-    PixelImageView view = new TerminalView();
-    ImageProcessorController controller = new ImageProcessorControllerImpl(model,
-            view, getReadable(args));
-    controller.startProcessing();
+    if (args.length == 2) {
+      ImageProcessor model = new BasicImageProcessor(new HashMap<>());
+      PixelImageView view = new SwingImageProcessor();
+    } else {
+      ImageProcessor model = new BasicImageProcessor(new HashMap<>());
+      PixelImageView view = new TerminalView();
+      ImageProcessorController controller = new ImageProcessorControllerImpl(model,
+              view, getReadable(args));
+      controller.startProcessing();
+    }
   }
 }
