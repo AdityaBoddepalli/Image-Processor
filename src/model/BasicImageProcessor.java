@@ -141,36 +141,6 @@ public class BasicImageProcessor implements ImageProcessor {
 
 
   /**
-   * Represents a PixelImage as text and saves it to a PPM file.
-   *
-   * @param fileName the file to save up
-   * @param imgName  the image to save
-   */
-  @Override
-  public void saveImage(String fileName, String imgName) throws IOException {
-    this.ensureKey(imgName);
-    PixelImage img = this.images.get(imgName);
-    String imgFormat = this.getImageFormat(fileName);
-    if (!fileName.substring(fileName.length() - 4, fileName.length()).equals(".ppm")) {
-      File output = new File(fileName);
-      ImageIO.write(ImageUtil.pixelToBuffered(img), imgFormat, output);
-
-    } else {
-      img.saveImg(fileName);
-    }
-
-  }
-
-  private String getImageFormat(String fileName) {
-    for (int i = fileName.length() - 1; i >= 0; i--) {
-      if (fileName.charAt(i) == '.') {
-        return fileName.substring(i + 1);
-      }
-    }
-    throw new IllegalArgumentException("Filename doesnt have an extension");
-  }
-
-  /**
    * Return a map of the images loaded so for with their names.
    *
    * @param imgName the img name

@@ -428,31 +428,6 @@ public class BasicImageProcessorTest {
             masterDark.getPixelAt(2, 2));
   }
 
-  @Test
-  public void saveToPPM() throws IOException {
-    this.initData();
-    imgpro1.adjustBrightness("master", -10, "master dark");
-    imgpro1.saveImage("res/master-dark.ppm", "master dark");
-    imgpro1.loadImage("res/master-dark.ppm", "master dark 2");
-
-    assertEquals(imgpro1.getLoadedImg("master dark"),
-            imgpro1.getLoadedImg("master dark 2"));
-
-    this.initData();
-    imgpro1.loadImage("res/chess3.ppm", "chessppm");
-    imgpro1.saveImage("res/chess3Saved.png", "chessppm");
-    imgpro1.loadImage("res/chess3Saved.png", "chess3Saved");
-
-    this.initData();
-    imgpro1.loadImage("res/chess3.png", "chesspng");
-    imgpro1.saveImage("res/chess3Saved.jpg", "chesspng");
-    imgpro1.loadImage("res/chess3Saved.jpg", "chess3Saved");
-
-    this.initData();
-    imgpro1.loadImage("res/chess3.jpg", "chessjpg");
-    imgpro1.saveImage("res/chess3Saved.ppm", "chessjpg");
-    imgpro1.loadImage("res/chess3Saved.ppm", "chess3Saved");
-  }
 
   @Test
   public void filterImage() throws IOException {

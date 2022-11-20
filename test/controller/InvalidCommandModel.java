@@ -72,18 +72,6 @@ public class InvalidCommandModel implements ImageProcessor {
   }
 
   /**
-   * Represents a PixelImage as text and saves it to a PPM file.
-   *
-   * @param fileName the file to save up
-   * @param imgName  the image to save
-   */
-  @Override
-  public void saveImage(String fileName, String imgName) {
-    throw new IllegalArgumentException("get flounced");
-
-  }
-
-  /**
    * Return a map of the images loaded so for with their names.
    *
    * @param imgName the img name

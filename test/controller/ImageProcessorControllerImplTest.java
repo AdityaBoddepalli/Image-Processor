@@ -2,6 +2,7 @@ package controller;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashMap;
 
@@ -168,4 +169,5 @@ public class ImageProcessorControllerImplTest {
             "Command: save res/processed-modern-art.ppm modart\n", log.toString());
 
   }
+
 }

@@ -58,15 +58,6 @@ public interface ImageProcessor {
 
 
   /**
-   * Represents a PixelImage as text and saves it to a PPM file.
-   *
-   * @param fileName the file to save up
-   * @param imgName  the image to save
-   */
-  void saveImage(String fileName, String imgName) throws IOException;
-
-
-  /**
    * Return a map of the images loaded so for with their names.
    *
    * @param imgName the img name
