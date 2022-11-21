@@ -3,12 +3,14 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
+import controller.GUIController;
 import controller.ImageProcessorController;
 import controller.ImageProcessorControllerImpl;
 import model.BasicImageProcessor;
 import model.ImageProcessor;
+import view.GUIView;
 import view.PixelImageView;
-import view.SwingImageProcessor;
+import view.SwingImageProcessorView;
 import view.TerminalView;
 
 /**
@@ -46,7 +48,8 @@ public class ImageProcessorRunner {
   public static void main(String[] args) {
     if (args.length == 2) {
       ImageProcessor model = new BasicImageProcessor(new HashMap<>());
-      PixelImageView view = new SwingImageProcessor();
+      GUIView view = new SwingImageProcessorView("gimpLite");
+      GUIController controller = new GUIController(model, view);
     } else {
       ImageProcessor model = new BasicImageProcessor(new HashMap<>());
       PixelImageView view = new TerminalView();

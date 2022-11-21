@@ -3,6 +3,7 @@ package model;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -23,7 +24,7 @@ public class BasicImageProcessorTest {
   @Before
   public void initData() throws IOException {
     imgpro1 = new BasicImageProcessor(new HashMap<String, PixelImage>());
-    imgpro1.loadImage("res/masterTester.ppm", "master");
+    imgpro1.loadImage(new File("res/masterTester.ppm"), "master");
 
   }
 
@@ -42,7 +43,7 @@ public class BasicImageProcessorTest {
   @Test
   public void loadImage() throws IOException {
     this.initData();
-    imgpro1.loadImage("res/chess3.ppm", "simple chess");
+    imgpro1.loadImage(new File("res/chess3.ppm"), "simple chess");
     PixelImage chess3 = imgpro1.getLoadedImg("simple chess");
 
     assertEquals(new StdPixel(0, 0, 0, 255),
@@ -65,7 +66,7 @@ public class BasicImageProcessorTest {
             chess3.getPixelAt(2, 2));
 
     this.initData();
-    imgpro1.loadImage("res/chess3.png", "simple chess");
+    imgpro1.loadImage(new File("res/chess3.png"), "simple chess");
     PixelImage chess3png = imgpro1.getLoadedImg("simple chess");
 
     assertEquals(new StdPixel(0, 0, 0, 255),
@@ -89,7 +90,7 @@ public class BasicImageProcessorTest {
 
     //In jpeg and jpg, there is slight data loss due to the conversion.
     this.initData();
-    imgpro1.loadImage("res/chess3.jpg", "simple chess");
+    imgpro1.loadImage(new File("res/chess3.jpg"), "simple chess");
     PixelImage chess3jpg = imgpro1.getLoadedImg("simple chess");
 
     assertEquals(new StdPixel(0, 0, 0, 255),
@@ -112,7 +113,7 @@ public class BasicImageProcessorTest {
             chess3jpg.getPixelAt(2, 2));
 
     this.initData();
-    imgpro1.loadImage("res/chess3.jpeg", "simple chess");
+    imgpro1.loadImage(new File("res/chess3.jpeg"), "simple chess");
     PixelImage chess3jpeg = imgpro1.getLoadedImg("simple chess");
 
     assertEquals(new StdPixel(0, 0, 0, 255),

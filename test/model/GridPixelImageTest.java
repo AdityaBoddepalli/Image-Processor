@@ -2,6 +2,7 @@ package model;
 
 import org.junit.Test;
 
+import java.io.File;
 import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
@@ -168,7 +169,7 @@ public class GridPixelImageTest {
     this.initData();
     PixelImage pI1Darker = pI1.adjustBrightness(-10);
     pI1Darker.saveImg("res/pI1-dark.ppm");
-    Scanner image = ImageUtil.readPPM("res/pI1-dark.ppm");
+    Scanner image = ImageUtil.readPPM(new File("res/pI1-dark.ppm"));
     assertEquals("P3", image.next());
     assertEquals("2", image.next());
     assertEquals("2", image.next());

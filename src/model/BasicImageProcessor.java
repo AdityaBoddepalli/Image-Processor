@@ -32,17 +32,17 @@ public class BasicImageProcessor implements ImageProcessor {
   /**
    * Loads the image at the given path and refers it by the given image name.
    *
-   * @param imgPath the file path
+   * @param file the file
    * @param imgName the name of the image.
    */
   @Override
-  public void loadImage(String imgPath, String imgName) throws IOException {
+  public void loadImage(File file, String imgName) throws IOException {
     PixelImage image;
 
-    if (!imgPath.substring(imgPath.length() - 4, imgPath.length()).equals(".ppm")) {
-      image = ImageUtil.bufferedToPixel(ImageIO.read(new FileInputStream(imgPath)));
+    if (!file.getName().substring(file.getName().length() - 4, file.getName().length()).equals(".ppm")) {
+      image = ImageUtil.bufferedToPixel(ImageIO.read(new FileInputStream(file)));
     } else {
-      Scanner imgScanner = ImageUtil.readPPM(imgPath);
+      Scanner imgScanner = ImageUtil.readPPM(file);
       String token;
       token = imgScanner.next();
       if (!token.equals("P3")) {
@@ -67,9 +67,7 @@ public class BasicImageProcessor implements ImageProcessor {
       }
       image = new GridPixelImage(grid, height, width);
     }
-
-    this.images.put(imgName, image);
-
+      this.images.put(imgName, image);
   }
 
   /**
@@ -77,7 +75,7 @@ public class BasicImageProcessor implements ImageProcessor {
    *
    * @param key the key
    */
-  private void ensureKey(String key) {
+  public void ensureKey(String key) {
     if (!(images.containsKey(key))) {
       throw new IllegalArgumentException("No image called " + key + " is currently loaded");
     }

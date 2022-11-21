@@ -1,5 +1,6 @@
 package model;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -11,10 +12,10 @@ public interface ImageProcessor {
   /**
    * Loads the image at the given path and refers it by the given image name.
    *
-   * @param imgPath the file path
+   * @param file the file
    * @param imgName the name of the image.
    */
-  void loadImage(String imgPath, String imgName) throws IOException;
+  void loadImage(File file, String imgName) throws IOException;
 
 
   /**
@@ -74,5 +75,12 @@ public interface ImageProcessor {
    */
   void filterImage(String imgName, String destName, String type);
 
+
+  /**
+   * Ensures that the given key is a valid image name.
+   *
+   * @param key the key
+   */
+  void ensureKey(String key);
 
 }

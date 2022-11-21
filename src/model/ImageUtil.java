@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -17,15 +18,15 @@ public class ImageUtil {
   /**
    * Read an image file in the PPM format and print the colors.
    *
-   * @param filename the path of the file.
+   * @param file the path of the file.
    */
-  public static Scanner readPPM(String filename) {
+  public static Scanner readPPM(File file) {
     Scanner sc;
 
     try {
-      sc = new Scanner(new FileInputStream(filename));
+      sc = new Scanner(new FileInputStream(file));
     } catch (FileNotFoundException e) {
-      throw new IllegalArgumentException("File " + filename + " not found!");
+      throw new IllegalArgumentException("File not found!");
     }
     StringBuilder builder = new StringBuilder();
     //read the file line by line, and populate a string. This will throw away any comment lines

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import model.ImageProcessor;
@@ -23,19 +24,21 @@ public class ConfirmInputsModel implements ImageProcessor {
     this.log = log;
   }
 
+
   /**
    * Loads the image at the given path and refers it by the given image name.
    *
-   * @param imgPath the file path
+   * @param file    the file
    * @param imgName the name of the image.
    */
   @Override
-  public void loadImage(String imgPath, String imgName) {
+  public void loadImage(File file, String imgName) throws IOException {
     try {
-      log.append(String.format("Command: load %s %s\n", imgPath, imgName));
+      log.append(String.format("Command: load %s %s\n", file.getName(), imgName));
     } catch (IOException e) {
       throw new IllegalArgumentException(e);
     }
+
   }
 
   /**
@@ -137,5 +140,15 @@ public class ConfirmInputsModel implements ImageProcessor {
     } catch (IOException e) {
       throw new IllegalArgumentException(e);
     }
+  }
+
+  /**
+   * Ensures that the given key is a valid image name.
+   *
+   * @param key the key
+   */
+  @Override
+  public void ensureKey(String key) {
+
   }
 }

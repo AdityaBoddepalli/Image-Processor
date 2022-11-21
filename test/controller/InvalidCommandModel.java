@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.File;
+
 import model.ImageProcessor;
 import model.PixelImage;
 
@@ -11,11 +13,11 @@ public class InvalidCommandModel implements ImageProcessor {
   /**
    * Loads the image at the given path and refers it by the given image name.
    *
-   * @param imgPath the file path
+   * @param file the file
    * @param imgName the name of the image.
    */
   @Override
-  public void loadImage(String imgPath, String imgName) {
+  public void loadImage(File file, String imgName) {
     throw new IllegalArgumentException("get flounced");
   }
 
@@ -93,5 +95,15 @@ public class InvalidCommandModel implements ImageProcessor {
   @Override
   public void filterImage(String imgName, String destName, String type) {
     throw new IllegalArgumentException("get flounced");
+  }
+
+  /**
+   * Ensures that the given key is a valid image name.
+   *
+   * @param key the key
+   */
+  @Override
+  public void ensureKey(String key) {
+
   }
 }
