@@ -39,6 +39,8 @@ public abstract class AbstractButtonAction implements Runnable{
     if(displayImgName != null) {
       this.view.setDisplayImage(this.model.getLoadedImg(displayImgName));
       this.view.setCurrImageName(displayImgName);
+      this.view.reDrawHisto(this.model.getLoadedImg(displayImgName).computeDistr(),
+              this.model.getLoadedImg(displayImgName).getMaxValue());
       this.view.refresh();
     }
   }

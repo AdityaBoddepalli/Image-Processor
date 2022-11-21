@@ -204,6 +204,24 @@ public class SwingImageProcessorView extends JFrame implements GUIView {
   }
 
   /**
+   * Redraws the histogram.
+   *
+   * @param distributions the rgbi channels
+   * @param maxValue      max val of the image
+   */
+  @Override
+  public void reDrawHisto(int[][] distributions, int maxValue) {
+    this.histogram.setRedDistr(distributions[0]);
+    this.histogram.setGreenDistr(distributions[1]);
+    this.histogram.setBlueDistr(distributions[2]);
+    this.histogram.setIntensityDistr(distributions[3]);
+    this.histogram.setMaxVal(maxValue);
+    this.histogram.repaint();
+    this.histogram.setVisible(true);
+  }
+
+
+  /**
    * Render a specific message to the provided data destination.
    *
    * @param message the message to be transmitted

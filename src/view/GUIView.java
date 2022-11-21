@@ -64,4 +64,11 @@ public interface GUIView extends PixelImageView {
    */
   String currImageName();
 
+  /**
+   * Redraws the histogram.
+   * @param distributions the rgbi channels
+   * @param maxValue max val of the image
+   */
+  void reDrawHisto(int[][] distributions, int maxValue);
+
 }

@@ -147,11 +147,10 @@ public class ImageProcessorControllerImplTest {
             "blur modart modart " +
             "sepia modart modart " +
             "sharpen modart modart " +
-            "greyscale modart modart " +
-            "save res/processed-modern-art.ppm modart ");
+            "greyscale modart modart ");
     controller1 = new ImageProcessorControllerImpl(new ConfirmInputsModel(log), view1, in);
     controller1.startProcessing();
-    assertEquals("Command: load res/modern-art.ppm modart\n" +
+    assertEquals("Command: load modern-art.ppm modart\n" +
             "Command: extract-component modart modart red\n" +
             "Command: extract-component modart modart green\n" +
             "Command: extract-component modart modart blue\n" +
@@ -165,8 +164,7 @@ public class ImageProcessorControllerImplTest {
             "Command: filter modart modart blur\n" +
             "Command: filter modart modart sepia\n" +
             "Command: filter modart modart sharpen\n" +
-            "Command: filter modart modart greyscale\n" +
-            "Command: save res/processed-modern-art.ppm modart\n", log.toString());
+            "Command: filter modart modart greyscale\n", log.toString());
 
   }
 

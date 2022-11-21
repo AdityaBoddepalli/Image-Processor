@@ -2,6 +2,7 @@ package model;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -259,6 +260,26 @@ public class GridPixelImage implements PixelImage {
   @Override
   public boolean isValidPxl(int row, int col) {
     return (row >= 0 && row < this.height) && (col >= 0 && col < this.width);
+  }
+
+  /**
+   * Computes the frequency of rgb values and the intensity of each pixel.
+   *
+   * @return an array of 4 maxval sized arrays representing rgb and intensity
+   */
+  @Override
+  public int[][] computeDistr() {
+    int[][] toRet = new int[4][this.getMaxValue() + 1];
+    for (int row = 0; row < this.getHeight(); row++) {
+      for (int col = 0; col < this.getWidth(); col++) {
+        Pixel currPxl = this.getPixelAt(row, col);
+        toRet[0][currPxl.getRed()] += 1;
+        toRet[1][currPxl.getGreen()] += 1;
+        toRet[2][currPxl.getBlue()] += 1;
+        toRet[3][currPxl.greyscale("intensity").getRed()] += 1;
+      }
+    }
+    return toRet;
   }
 
   @Override

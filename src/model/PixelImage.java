@@ -92,4 +92,11 @@ public interface PixelImage {
    * @return true if valid.
    */
   boolean isValidPxl(int row, int col);
+
+
+  /**
+   * Computes the frequency of rgb values and the intensity of each pixel.
+   * @return an array of 4 maxval sized arrays representing rgb and intensity
+   */
+  int[][] computeDistr();
 }
