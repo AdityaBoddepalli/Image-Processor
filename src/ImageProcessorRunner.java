@@ -28,14 +28,16 @@ public class ImageProcessorRunner {
    */
   public static Readable getReadable(String[] args) {
     Readable input;
-    if (args.length == 1) {
+    if (args.length == 2 && args[0].equals("-file")) {
       try {
-        input = new InputStreamReader(new FileInputStream(args[0]));
+        input = new InputStreamReader(new FileInputStream(args[1]));
       } catch (FileNotFoundException e) {
         throw new IllegalArgumentException("Couldn't open script");
       }
-    } else {
+    } else if (args.length == 1 && args[0].equals("-text")) {
       input = new InputStreamReader(System.in);
+    } else {
+      throw new IllegalArgumentException("Invalid arguments to the program");
     }
     return input;
   }
@@ -46,12 +48,11 @@ public class ImageProcessorRunner {
    * @param args enter filepath as first argument if a script needs to be executed.
    */
   public static void main(String[] args) {
-    if (args.length == 2) {
-      ImageProcessor model = new BasicImageProcessor(new HashMap<>());
-      GUIView view = new SwingImageProcessorView("gimpLite");
+    ImageProcessor model = new BasicImageProcessor(new HashMap<>());
+    if (args.length == 0) {
+      GUIView view = new SwingImageProcessorView("Image Processor");
       GUIController controller = new GUIController(model, view);
     } else {
-      ImageProcessor model = new BasicImageProcessor(new HashMap<>());
       PixelImageView view = new TerminalView();
       ImageProcessorController controller = new ImageProcessorControllerImpl(model,
               view, getReadable(args));

@@ -5,8 +5,16 @@ import java.io.IOException;
 import model.ImageProcessor;
 import view.GUIView;
 
-public class SharpenButtonAction extends AbstractButtonAction{
+/**
+ * The button for sharpening an image.
+ */
+public class SharpenButtonAction extends AbstractButtonAction {
 
+  /**
+   * The constructor for the button.
+   * @param model the model
+   * @param view the view
+   */
   public SharpenButtonAction(ImageProcessor model, GUIView view) {
     super(model, view);
   }
@@ -19,12 +27,12 @@ public class SharpenButtonAction extends AbstractButtonAction{
    */
   @Override
   protected String specificAction() throws IOException {
-    if(!this.view.checkIfLoaded()) {
+    if (!this.view.checkIfLoaded()) {
       this.view.transmitMessage("Load an image to process before selecting the command");
       return null;
     }
     String destName = view.getUserStringInput("Name the modified version of the image:");
-    if(destName == null) {
+    if (destName == null) {
       return null;
     }
     this.model.filterImage(this.view.currImageName(), destName, "sharpen");

@@ -26,12 +26,14 @@ public interface GUIView extends PixelImageView {
 
   /**
    * Shows the current image on the screen.
+   *
    * @param image the image to display.
    */
   void setDisplayImage(PixelImage image);
 
   /**
    * Prompts the user to provide a file to load into the img processor.
+   *
    * @return a file object
    */
   File takeFileInput() throws IOException;
@@ -48,26 +50,30 @@ public interface GUIView extends PixelImageView {
   /**
    * Sets the image name so that the view can pass it to the controller
    * to do stuff.
+   *
    * @param imgName name of the img
    */
   void setCurrImageName(String imgName);
 
   /**
    * Checks if an image is currently loaded.
+   *
    * @return true if yes.
    */
   boolean checkIfLoaded();
 
   /**
    * An observation on the view that observes the name of the image that is being displayed.
+   *
    * @return a string representing the image name.
    */
   String currImageName();
 
   /**
    * Redraws the histogram.
+   *
    * @param distributions the rgbi channels
-   * @param maxValue max val of the image
+   * @param maxValue      max val of the image
    */
   void reDrawHisto(int[][] distributions, int maxValue);
 

@@ -10,6 +10,7 @@ import model.ImageProcessor;
 public class VertFlipCmd extends AbstractCmd {
   /**
    * Constructs a vertflipcmd.
+   *
    * @param input the input into the command
    */
   public VertFlipCmd(Scanner input) {

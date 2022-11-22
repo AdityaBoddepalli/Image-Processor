@@ -11,8 +11,9 @@ public class ImageProcessorRunnerTest {
 
   @Test
   public void testGetInput() {
-    String[] arguments = new String[1];
-    arguments[0] = "res/scriptTest.txt";
+    String[] arguments = new String[2];
+    arguments[0] = "-file";
+    arguments[1] = "res/scriptTest.txt";
     String expected = "load res/giyu.png art\n" +
             "greyscale art red-vert\n" +
             "save res/newman1.png red-vert";
@@ -29,8 +30,9 @@ public class ImageProcessorRunnerTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void testInvalidFile() {
-    String[] arguments = new String[1];
-    arguments[0] = "UNGADABUNGA.txt";
+    String[] arguments = new String[2];
+    arguments[0] = "-file";
+    arguments[1] = "oogabooga.txt";
     ImageProcessorRunner.getReadable(arguments);
   }
 }

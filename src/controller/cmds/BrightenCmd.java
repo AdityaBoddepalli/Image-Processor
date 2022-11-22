@@ -2,7 +2,6 @@ package controller.cmds;
 
 import java.util.Scanner;
 
-
 import model.ImageProcessor;
 
 /**

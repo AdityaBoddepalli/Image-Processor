@@ -80,6 +80,7 @@ public interface PixelImage {
 
   /**
    * Filters this image according to the type.
+   *
    * @param type the type of filter
    * @return a new pixel image that is filtered
    */
@@ -87,6 +88,7 @@ public interface PixelImage {
 
   /**
    * Is the given posn within the valid boundaries of the image.
+   *
    * @param row row
    * @param col col
    * @return true if valid.
@@ -96,7 +98,8 @@ public interface PixelImage {
 
   /**
    * Computes the frequency of rgb values and the intensity of each pixel.
-   * @return an array of 4 maxval sized arrays representing rgb and intensity
+   *
+   * @return an array of 4 maxval + 1 sized arrays representing rgb and intensity
    */
   int[][] computeDistr();
 }

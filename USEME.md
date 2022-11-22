@@ -1,32 +1,22 @@
-## Commands
-**Note:-** if using relative paths all file paths are relative to the jar location which is in res.
+# How to Use the GUI Image Processor
 
-### Our script that should be given as an input is name script.txt 
-### Do not provide scriptTest.txt as input to the jar(it only exists to test the main method)
+--- 
 
-| To do this      | Type this                          |
-|-----------------|------------------------------------|
-| Loading Image   | load filepath imagename            |
-| Red Component   | red-component imagename destname   |
-| Green Component | green-component imagename destname |
-| Blue Component  | blue-component imagename destname  |
-| Value           | value imagename destname           |
-| Intensity       | intensity imagename destname       |
-| Luma            | luma imagename destname            |
-| Vertical Flip   | flip-vertical imagename destname   |
-| Horizontal Flip | flip-horizontal imagename destname |
-| Brighten Image  | brighten imagename destname factor |
-| Darken Image    | darken imagename destname factor   |
-| Blur Image      | blur imagename destname            |
-| Sharpen Image   | sharpen imagename destname         |
-| Greyscale Image | greyscale imagename destname       |
-| Sepia Image     | sepia imagename destname           |
-| Save Image      | save filepath imagename            |
+- Run the ImageProcessor.jar file with no command line arguments.
+- Select the Load button in the top left corner of the program.
+- Select your image from the file chooser.
+- Name your image.
+- Choose which image process button you want to implement on your image.
+  - For brightening and darkening, you will be prompted for the factor at which you want to brighten or darken the image.
+- Name your modified version of your image.
+- When you have finished editing your image, you can save your image using the Save button.
+- Choose your save file path & file name in the file chooser.
+- When completely finished editing images, close the tab using the X button on the top-right corner.
 
 ---
-The commands can be entered via an interactive terminal (on default, when run with no cmd line arguments),
-or via a script file with the filePath as a string in the first cmd line argument.
 
-To quit the image processor type 'q' or 'quit' irrespective of the case. The process also quits at the end of
-file when given a script as a command line argument.
----
+### Additional Features:
+
+- To open an image that is already in the image processor, click the Open button and give the image name.
+- You can resize the histogram or image viewing space by dragging the border surrounding the panel.
+- You can click Refresh GUI button to reset the panels back to their original proportions.

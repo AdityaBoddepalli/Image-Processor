@@ -4,16 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
 
+/**
+ * An action listener with a map for all the buttons.
+ */
 public class ButtonListener implements ActionListener {
 
   Map<String, Runnable> buttonClickedActions;
 
-
-  /**
-   * Default constructor.
-   */
-  public ButtonListener() {
-  }
 
   /**
    * Set the map for key typed events. Key typed events in Java Swing are characters

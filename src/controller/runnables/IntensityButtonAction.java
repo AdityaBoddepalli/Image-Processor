@@ -5,8 +5,17 @@ import java.io.IOException;
 import model.ImageProcessor;
 import view.GUIView;
 
-public class IntensityButtonAction extends AbstractButtonAction{
+/**
+ * The button for putting an image in greyscale in accordance to the intensity.
+ *
+ */
+public class IntensityButtonAction extends AbstractButtonAction {
 
+  /**
+   * The constructor for the button.
+   * @param model the model
+   * @param view the view
+   */
   public IntensityButtonAction(ImageProcessor model, GUIView view) {
     super(model, view);
   }
@@ -19,12 +28,12 @@ public class IntensityButtonAction extends AbstractButtonAction{
    */
   @Override
   protected String specificAction() throws IOException {
-    if(!this.view.checkIfLoaded()) {
+    if (!this.view.checkIfLoaded()) {
       this.view.transmitMessage("Load an image to process before selecting the command");
       return null;
     }
     String destName = view.getUserStringInput("Name the modified version of the image:");
-    if(destName == null) {
+    if (destName == null) {
       return null;
     }
     this.model.visGreyscale(this.view.currImageName(), destName, "intensity");

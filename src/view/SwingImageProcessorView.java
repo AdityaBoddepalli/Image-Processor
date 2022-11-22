@@ -1,19 +1,33 @@
 package view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.ImageUtil;
 import model.PixelImage;
 
+/**
+ * The frame of the graphics for the GUI Image Processor.
+ */
 public class SwingImageProcessorView extends JFrame implements GUIView {
 
 
@@ -25,7 +39,6 @@ public class SwingImageProcessorView extends JFrame implements GUIView {
   private JSplitPane imgAndStuff;
 
   private JButton[] buttons;
-
 
 
   private String currImgName;
@@ -48,9 +61,9 @@ public class SwingImageProcessorView extends JFrame implements GUIView {
     this.buttons = new JButton[18];
     String[] buttonNames =
             new String[]{"Load", "Save", "Open", "Red Component", "Green Component",
-                    "Blue Component", "Value", "Intensity", "Luma", "Brighten", "Darken",
-                    "Flip Horizontal", "Flip Vertical", "Blur", "Sharpen", "Sepia", "Greyscale",
-                    "Refresh GUI"};
+                "Blue Component", "Value", "Intensity", "Luma", "Brighten", "Darken",
+                "Flip Horizontal", "Flip Vertical", "Blur", "Sharpen", "Sepia", "Greyscale",
+                "Refresh GUI"};
     for (int ii = 0; ii < this.buttons.length; ii++) {
       JButton currButt = new JButton(buttonNames[ii]);
       currButt.setActionCommand(buttonNames[ii] + " Button");

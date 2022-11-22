@@ -1,19 +1,23 @@
 package controller.runnables;
 
-import java.io.File;
 import java.io.IOException;
-
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.ImageProcessor;
 import view.GUIView;
 
-public class OpenButtonAction extends AbstractButtonAction{
+/**
+ * The button for opening an image in the GUI.
+ */
+public class OpenButtonAction extends AbstractButtonAction {
+
+  /**
+   * The constructor for the button.
+   * @param model the model
+   * @param view the view
+   */
   public OpenButtonAction(ImageProcessor model, GUIView view) {
     super(model, view);
   }
-
 
 
   /**
@@ -24,7 +28,7 @@ public class OpenButtonAction extends AbstractButtonAction{
   @Override
   protected String specificAction() throws IOException {
     String imgName = view.getUserStringInput("Enter the name of the image: ");
-    if(imgName == null) {
+    if (imgName == null) {
       return null;
     }
     try {

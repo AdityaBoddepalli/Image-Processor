@@ -12,6 +12,7 @@ public interface MyMatrix {
 
   /**
    * Returns the pixel after being altered by this matrix.
+   *
    * @param img the og img
    * @param row the row of the pixel
    * @param col the col of the pixel

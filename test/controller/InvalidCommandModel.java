@@ -13,7 +13,7 @@ public class InvalidCommandModel implements ImageProcessor {
   /**
    * Loads the image at the given path and refers it by the given image name.
    *
-   * @param file the file
+   * @param file    the file
    * @param imgName the name of the image.
    */
   @Override
@@ -104,6 +104,6 @@ public class InvalidCommandModel implements ImageProcessor {
    */
   @Override
   public void ensureKey(String key) {
-
+    throw new IllegalArgumentException("get flounced");
   }
 }

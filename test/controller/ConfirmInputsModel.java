@@ -123,6 +123,11 @@ public class ConfirmInputsModel implements ImageProcessor {
    */
   @Override
   public PixelImage getLoadedImg(String imgName) {
+    try {
+      log.append(String.format("Command: get image %s\n", imgName));
+    } catch (IOException e) {
+      throw new IllegalArgumentException(e);
+    }
     return null;
   }
 
@@ -149,6 +154,10 @@ public class ConfirmInputsModel implements ImageProcessor {
    */
   @Override
   public void ensureKey(String key) {
-
+    try {
+      log.append(String.format("Command: ensure %s\n", key));
+    } catch (IOException e) {
+      throw new IllegalArgumentException(e);
+    }
   }
 }

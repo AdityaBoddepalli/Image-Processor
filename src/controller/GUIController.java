@@ -1,7 +1,6 @@
 package controller;
 
 
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +34,11 @@ public class GUIController {
 
   private final GUIView view;
 
+  /**
+   * Constructs a GUI controller with the given model and view.
+   * @param model the model
+   * @param view the view
+   */
   public GUIController(ImageProcessor model, GUIView view) {
     this.model = model;
     this.view = view;
@@ -63,7 +67,7 @@ public class GUIController {
     buttonClickedMap.put("Sharpen Button", new SharpenButtonAction(this.model, this.view));
     buttonClickedMap.put("Sepia Button", new SepiaButtonAction(this.model, this.view));
     buttonClickedMap.put("Greyscale Button", new GreyscaleButtonAction(this.model, this.view));
-    buttonClickedMap.put("Refresh GUI Button", new RefreshButtonAction(this.model, this.view));
+    buttonClickedMap.put("Refresh GUI Button", new RefreshButtonAction(this.view));
 
     buttonListener.setButtonClickedActionMap(buttonClickedMap);
 

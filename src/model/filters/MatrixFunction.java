@@ -21,6 +21,7 @@ public class MatrixFunction {
 
   /**
    * Returns a new PixelImage after altered by the given kernel.
+   *
    * @return new filtered image
    */
   public PixelImage filterify() {

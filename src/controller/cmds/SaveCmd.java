@@ -16,6 +16,7 @@ import model.PixelImage;
 public class SaveCmd extends AbstractCmd {
   /**
    * Constructs a savecmd.
+   *
    * @param input the input into the command.
    */
   public SaveCmd(Scanner input) {

@@ -2,7 +2,6 @@ package controller;
 
 import org.junit.Test;
 
-import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashMap;
 

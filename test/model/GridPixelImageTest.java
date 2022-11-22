@@ -108,7 +108,7 @@ public class GridPixelImageTest {
             2, 2), pI1.getComponent("red"));
     assertEquals(new GridPixelImage(
                     new Pixel[][]{{new StdPixel(100, 100, 100, 255)}, {
-                        new StdPixel(200, 200, 200, 255)}},
+                            new StdPixel(200, 200, 200, 255)}},
                     2, 1),
             pI2.getComponent("green"));
     assertEquals(new GridPixelImage(
