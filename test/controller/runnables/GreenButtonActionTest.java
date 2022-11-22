@@ -5,8 +5,11 @@ package controller.runnables;
  */
 public class GreenButtonActionTest extends AbstractButtonActionTest {
 
+  /**
+   * Constructs a button test.
+   */
   public GreenButtonActionTest() {
     super("Green Component Button",
-            "Command: asked: Name the modified version of the image:\n");
+            "added listeners\nCommand: asked: Name the modified version of the image:\n");
   }
 }

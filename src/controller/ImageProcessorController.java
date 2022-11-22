@@ -6,7 +6,7 @@ package controller;
 public interface ImageProcessorController {
 
   /**
-   * Start the imgprocessor and wait for user input.
+   * Start the imgprocessor.
    * Execute if the input is valid
    *
    * @throws IllegalStateException if the input is invalid or impossible right now.

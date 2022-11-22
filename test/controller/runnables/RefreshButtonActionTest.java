@@ -5,8 +5,11 @@ package controller.runnables;
  */
 public class RefreshButtonActionTest extends AbstractButtonActionTest {
 
+  /**
+   * Constructs a button test.
+   */
   public RefreshButtonActionTest() {
     super("Refresh GUI Button",
-            "refreshed view\n");
+            "added listeners\nrefreshed view\n");
   }
 }

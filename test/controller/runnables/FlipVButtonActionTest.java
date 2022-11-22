@@ -5,8 +5,11 @@ package controller.runnables;
  */
 public class FlipVButtonActionTest extends AbstractButtonActionTest {
 
+  /**
+   * Constructs a button test.
+   */
   public FlipVButtonActionTest() {
     super("Flip Vertical Button",
-            "Command: asked: Name the modified version of the image:\n");
+            "added listeners\nCommand: asked: Name the modified version of the image:\n");
   }
 }

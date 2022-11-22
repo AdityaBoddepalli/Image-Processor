@@ -28,7 +28,7 @@ import view.GUIView;
 /**
  * An asynchronous controller for the GUI view.
  */
-public class GUIController {
+public class GUIController implements ImageProcessorController {
 
   private final ImageProcessor model;
 
@@ -36,13 +36,13 @@ public class GUIController {
 
   /**
    * Constructs a GUI controller with the given model and view.
+   *
    * @param model the model
-   * @param view the view
+   * @param view  the view
    */
   public GUIController(ImageProcessor model, GUIView view) {
     this.model = model;
     this.view = view;
-    this.configureButler();
   }
 
 
@@ -73,5 +73,16 @@ public class GUIController {
 
     this.view.addActionListener(buttonListener);
 
+  }
+
+  /**
+   * Start the imgprocessor and configure the buttons.
+   * Execute if the input is valid
+   *
+   * @throws IllegalStateException if the input is invalid or impossible right now.
+   */
+  @Override
+  public void startProcessing() throws IllegalStateException {
+    this.configureButler();
   }
 }

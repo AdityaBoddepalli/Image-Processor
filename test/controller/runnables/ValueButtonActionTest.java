@@ -5,8 +5,11 @@ package controller.runnables;
  */
 public class ValueButtonActionTest extends AbstractButtonActionTest {
 
+  /**
+   * Constructs a button test.
+   */
   public ValueButtonActionTest() {
     super("Value Button",
-            "Command: asked: Name the modified version of the image:\n");
+            "added listeners\nCommand: asked: Name the modified version of the image:\n");
   }
 }

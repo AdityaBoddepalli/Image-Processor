@@ -5,8 +5,12 @@ package controller.runnables;
  */
 public class LoadButtonActionTest extends AbstractButtonActionTest {
 
+  /**
+   * Constructs a button test.
+   */
   public LoadButtonActionTest() {
-    super("Load Button", "asked file input\n" +
+    super("Load Button", "added listeners\n" +
+            "asked file input\n" +
             "Command: asked: Enter the name of the image: \n");
   }
 }

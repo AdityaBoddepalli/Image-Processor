@@ -21,6 +21,8 @@ public class HistoPanel extends JPanel {
 
   private int maxVal;
 
+  private double maxFrequency;
+
   private int[] intensityDistr;
 
   /**
@@ -33,25 +35,53 @@ public class HistoPanel extends JPanel {
     this.greenDistr = new int[this.maxVal + 1];
     this.blueDistr = new int[this.maxVal + 1];
     this.intensityDistr = new int[this.maxVal + 1];
+    this.maxFrequency = 0.0;
     this.setVisible(false);
   }
 
+  /**
+   * Sets the redDistr field to the given int array.
+   *
+   * @param redDistr the new redDistr
+   */
   public void setRedDistr(int[] redDistr) {
     this.redDistr = redDistr;
   }
 
+
+  /**
+   * Sets the greenDistr field to the given int array.
+   *
+   * @param greenDistr the new greenDistr
+   */
   public void setGreenDistr(int[] greenDistr) {
     this.greenDistr = greenDistr;
   }
 
+  /**
+   * Sets the blueDistr field to the given int array.
+   *
+   * @param blueDistr the new blueDistr
+   */
   public void setBlueDistr(int[] blueDistr) {
     this.blueDistr = blueDistr;
   }
 
+  /**
+   * Sets the intensityDistr field to the given int array.
+   *
+   * @param intensityDistr the new intensityDistr
+   */
   public void setIntensityDistr(int[] intensityDistr) {
     this.intensityDistr = intensityDistr;
   }
 
+
+  /**
+   * Updates the maxVal when needed.
+   *
+   * @param maxVal new maxVal
+   */
   public void setMaxVal(int maxVal) {
     this.maxVal = maxVal;
   }
@@ -80,8 +110,12 @@ public class HistoPanel extends JPanel {
                     Arrays.stream(this.blueDistr).max().getAsInt()),
             Integer.max(Arrays.stream(this.greenDistr).max().getAsInt(),
                     Arrays.stream(this.intensityDistr).max().getAsInt()));
+    // update the y axis scale when needed.
+    if (this.maxFrequency < maxFreq) {
+      this.maxFrequency = maxFreq;
+    }
     // scale the length of the bars based on the max frequency
-    double heightFactor = ((double) this.getHeight() - 40) / maxFreq;
+    double heightFactor = ((double) this.getHeight() - 40) / this.maxFrequency;
     String[] graphChannels = new String[]{"red", "green", "blue", "intensity"};
     // A convenient start value
     int channelStart = 15;

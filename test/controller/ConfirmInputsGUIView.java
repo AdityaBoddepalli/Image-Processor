@@ -48,6 +48,12 @@ public class ConfirmInputsGUIView implements GUIView {
   @Override
   public void addActionListener(ActionListener listener) {
     this.listener = listener;
+
+    try {
+      log.append("added listeners\n");
+    } catch (IOException e) {
+      throw new IllegalArgumentException(e);
+    }
   }
 
   /**

@@ -21,6 +21,11 @@ public abstract class AbstractButtonActionTest {
   String output;
 
 
+  /**
+   * Constructs a button test.
+   * @param command the command running
+   * @param output the expected output
+   */
   public AbstractButtonActionTest(String command, String output) {
     this.command = command;
     this.output = output;
@@ -32,6 +37,7 @@ public abstract class AbstractButtonActionTest {
     ConfirmInputsGUIView mockView = new ConfirmInputsGUIView(log);
     GUIController controller = new GUIController(new ConfirmInputsModel(log),
             mockView);
+    controller.startProcessing();
     mockView.listener.actionPerformed(new ActionEvent(mockView, 1, command));
     assertEquals(output, log.toString());
   }

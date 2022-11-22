@@ -5,8 +5,11 @@ package controller.runnables;
  */
 public class OpenButtonActionTest extends AbstractButtonActionTest {
 
+  /**
+   * Constructs a button test.
+   */
   public OpenButtonActionTest() {
     super("Open Button",
-            "Command: asked: Enter the name of the image: \n");
+            "added listeners\nCommand: asked: Enter the name of the image: \n");
   }
 }

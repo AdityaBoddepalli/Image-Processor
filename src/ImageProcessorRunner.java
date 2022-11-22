@@ -49,14 +49,15 @@ public class ImageProcessorRunner {
    */
   public static void main(String[] args) {
     ImageProcessor model = new BasicImageProcessor(new HashMap<>());
+    ImageProcessorController controller;
     if (args.length == 0) {
       GUIView view = new SwingImageProcessorView("Image Processor");
-      GUIController controller = new GUIController(model, view);
+      controller = new GUIController(model, view);
     } else {
       PixelImageView view = new TerminalView();
-      ImageProcessorController controller = new ImageProcessorControllerImpl(model,
+      controller = new ImageProcessorControllerImpl(model,
               view, getReadable(args));
-      controller.startProcessing();
     }
+    controller.startProcessing();
   }
 }

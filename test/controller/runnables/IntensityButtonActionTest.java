@@ -5,8 +5,11 @@ package controller.runnables;
  */
 public class IntensityButtonActionTest extends AbstractButtonActionTest {
 
+  /**
+   * Constructs a button test.
+   */
   public IntensityButtonActionTest() {
     super("Intensity Button",
-            "Command: asked: Name the modified version of the image:\n");
+            "added listeners\nCommand: asked: Name the modified version of the image:\n");
   }
 }

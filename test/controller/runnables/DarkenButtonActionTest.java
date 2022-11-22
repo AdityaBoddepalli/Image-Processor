@@ -5,8 +5,11 @@ package controller.runnables;
  */
 public class DarkenButtonActionTest extends AbstractButtonActionTest {
 
+  /**
+   * Constructs a button test.
+   */
   public DarkenButtonActionTest() {
     super("Darken Button",
-            "Command: asked: Enter the darkening factor\n");
+            "added listeners\nCommand: asked: Enter the darkening factor\n");
   }
 }
